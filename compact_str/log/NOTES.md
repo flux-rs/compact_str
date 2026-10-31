@@ -39,8 +39,8 @@ the `LifetimeFree` marker impls), `macros.rs`, `features/*`, and `repr/bytes.rs`
 because the canary runs default features.
 
 The canary found one real hole, see `FLUX_ISSUES.md`. `harness/flux_canary.py` needed a fix: it unpacked
-3 values from a `run_cargo` that returns 4 on main. socket2 and dlmalloc-rs still carry the broken
-version since the rebase.
+3 values from a `run_cargo` that returns 4 on main. The rebase had broken it here and on socket2 and
+dlmalloc-rs, which have the same fix.
 
 ## The model
 
