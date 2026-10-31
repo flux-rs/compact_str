@@ -8,7 +8,7 @@ license = "MIT"
 rust-version = "1.71"
 homepage = "https://github.com/ParkMyCar/compact_str"
 repository = "https://github.com/ParkMyCar/compact_str"
-readme = "../README.md"
+readme = "README.md"
 keywords = ["string", "compact", "small", "memory", "mutable"]
 categories = ["encoding", "parsing", "memory-management", "text-processing"]
 
@@ -39,7 +39,12 @@ utoipa = ["dep:utoipa", "std"]
 valuable = ["dep:valuable"]
 zeroize = ["dep:zeroize"]
 
+# CENTRIFUGE: flux specs
 [dependencies]
+flux-rs = { git = "https://github.com/flux-rs/flux", rev = "bd5de273235457a5922280cc180c4a6a2990418a" }
+flux-core = { git = "https://github.com/flux-rs/flux", rev = "bd5de273235457a5922280cc180c4a6a2990418a" }
+flux-alloc = { git = "https://github.com/flux-rs/flux", rev = "bd5de273235457a5922280cc180c4a6a2990418a" }
+
 arbitrary = { version = "1", optional = true, default-features = false }
 bevy_reflect = { version = "0.19", optional = true }
 borsh = { version = "1", optional = true }
@@ -94,5 +99,9 @@ zmij = "=1.0.21"
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
+[package.metadata.flux]
+enabled = true
+
+# CENTRIFUGE: `flux` is set by `cargo flux`, not by cargo itself
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(kani)'] }
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(kani)', 'cfg(flux)'] }

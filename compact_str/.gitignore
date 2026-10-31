@@ -12,3 +12,6 @@ hfuzz_target/**
 
 # VSCode
 .vscode/**
+
+# CENTRIFUGE: local flux lib paths
+.cargo/
