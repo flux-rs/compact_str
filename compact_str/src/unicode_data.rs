@@ -1,6 +1,7 @@
 //! Adapted from
 //! <https://doc.rust-lang.org/nightly/src/core/unicode/unicode_data.rs.html>
 
+#[flux_rs::trusted(reason = "ABORT: the bounds follow from the contents of the tables, which flux doesn't track (ABORT.md §3)")]
 #[inline(always)]
 fn skip_search<const SOR: usize, const OFFSETS: usize>(
     needle: u32,

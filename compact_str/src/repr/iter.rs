@@ -31,6 +31,13 @@ impl<'a> FromIterator<&'a char> for Repr {
     }
 }
 
+/// CENTRIFUGE: `min_remaining` is whatever `size_hint` says, so this can overflow.
+#[flux_rs::trusted(reason = "BUG: `size_hint` can overflow the capacity sum, which panics in debug builds (BUGS.md bug 2)")]
+#[inline(always)]
+fn hint_capacity(bytes_len: usize, curr_len: usize, min_remaining: usize) -> usize {
+    bytes_len + curr_len + min_remaining
+}
+
 fn from_as_ref_str_iterator<S, I>(mut iter: I) -> Repr
 where
     S: AsRef<str>,
@@ -44,7 +51,7 @@ where
 
     // Continuously pull strings from the iterator
     let mut curr_len = 0;
-    let mut inline_buf = InlineBuffer::new_const("");
+    let mut inline_buf = InlineBuffer::empty();
     while let Some(s) = iter.next() {
         let str_slice = s.as_ref();
         let bytes_len = str_slice.len();
@@ -52,7 +59,7 @@ where
         // this new string is too large to fit into our inline buffer, so heap allocate the rest
         if bytes_len + curr_len > MAX_SIZE {
             let (min_remaining, _) = iter.size_hint();
-            let mut string = String::with_capacity(bytes_len + curr_len + min_remaining);
+            let mut string = String::with_capacity(hint_capacity(bytes_len, curr_len, min_remaining));
 
             // push existing strings onto the heap
             // SAFETY: `inline_buf` has been filled with `&str`s which are valid UTF-8

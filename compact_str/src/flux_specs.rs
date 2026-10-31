@@ -33,11 +33,18 @@ impl str {
 
     #[flux_rs::spec(fn(&str[@s]) -> &[u8][str_len(s)])]
     fn as_bytes(&self) -> &[u8];
+
+    #[flux_rs::spec(fn(&str[@s], index: usize) -> bool[#b] ensures b => (index <= str_len(s) && 0 <= str_len(s)))]
+    fn is_char_boundary(&self, index: usize) -> bool;
 }
 
 #[flux_rs::extern_spec(core::str)]
 #[flux_rs::spec(fn(&[u8][@n]) -> &str{s: str_len(s) == n})]
 unsafe fn from_utf8_unchecked(v: &[u8]) -> &str;
+
+#[flux_rs::extern_spec(core::str)]
+#[flux_rs::spec(fn(&mut [u8]) -> &mut str)]
+unsafe fn from_utf8_unchecked_mut(v: &mut [u8]) -> &mut str;
 
 /// Ghost: `dst` is a fresh allocation or a `&mut`, so it can't overlap `src`.
 #[flux_rs::trusted(reason = "ASSUMED: flux has no notion of distinct allocations; each call says why")]

@@ -611,7 +611,7 @@ impl Repr {
     /// The pointer is valid for writes up to [`Repr::capacity`], but only the first [`Repr::len`]
     /// bytes are guaranteed to be initialized.
     #[flux_rs::spec(fn(self: &strg Repr[@r]) -> *mut{p: crate::flux_specs::readable(p, ocap(r))} u8
-        ensures self: Repr{v: rlen(v) == rlen(r) && rcap(v) == ocap(r) && !is_static(v)})]
+        ensures self: Repr{v: rlen(v) == rlen(r) && rcap(v) == ocap(r) && !is_static(v) && rlen(r) <= ocap(r)})]
     #[inline]
     pub(crate) fn as_mut_ptr(&mut self) -> *mut u8 {
         #[flux_rs::spec(fn(this: &strg Repr[@r])

@@ -37,6 +37,14 @@ extern crate flux_core;
 #[cfg(flux)]
 mod flux_specs;
 
+// CENTRIFUGE: must stay at the crate root, a `property` elsewhere is ignored.
+flux_rs::defs! {
+    property ShlOne[<<](x, y) {
+        (x == 1 && y == 21) => [<<](x, y) == 2097152
+    }
+    qualifier UpToMaxSize(v: int) { v <= 24 }
+}
+
 mod features;
 mod macros;
 mod unicode_data;
@@ -138,7 +146,8 @@ mod tests;
 /// might not always be desirable if you're converting a very large amount of `String`s. If your
 /// code is very sensitive to allocations, consider the [`CompactString::from_string_buffer`] API.
 #[repr(transparent)]
-pub struct CompactString(Repr);
+#[flux_rs::refined_by(r: repr::Repr)]
+pub struct CompactString(#[flux_rs::field(Repr[r])] Repr);
 
 impl CompactString {
     /// Creates a new [`CompactString`] from any type that implements `AsRef<str>`.
@@ -314,6 +323,7 @@ impl CompactString {
     /// ```
     #[inline]
     #[track_caller]
+    #[flux_rs::spec(fn(capacity: usize) -> CompactString{v: repr::rlen(v.r) == 0 && !repr::is_static(v.r) && capacity <= repr::rcap(v.r)})]
     pub fn with_capacity(capacity: usize) -> Self {
         Self::try_with_capacity(capacity).unwrap_with_msg()
     }
@@ -323,6 +333,7 @@ impl CompactString {
     /// This method won't panic if the system is out-of-memory, but return an [`ReserveError`].
     /// Otherwise it behaves the same as [`CompactString::with_capacity()`].
     #[inline]
+    #[flux_rs::spec(fn(capacity: usize) -> Result<CompactString{v: repr::rlen(v.r) == 0 && !repr::is_static(v.r) && capacity <= repr::rcap(v.r)}, ReserveError>)]
     pub fn try_with_capacity(capacity: usize) -> Result<Self, ReserveError> {
         Repr::with_capacity(capacity).map(CompactString)
     }
@@ -483,6 +494,7 @@ impl CompactString {
     /// assert_eq!(emoji.len(), 4);
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s]) -> usize{v: v == repr::rlen(s.r) && v <= repr::rcap(s.r) && repr::rcap(s.r) <= 72057594037927934})]
     pub fn len(&self) -> usize {
         self.0.len()
     }
@@ -500,6 +512,7 @@ impl CompactString {
     /// assert!(!msg.is_empty());
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s]) -> bool[repr::rlen(s.r) == 0])]
     pub fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
@@ -526,6 +539,7 @@ impl CompactString {
     /// assert_eq!(compact.capacity(), 128);
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s]) -> usize{v: v == repr::rcap(s.r) && repr::rlen(s.r) <= v && 0 <= repr::rlen(s.r) && v <= 72057594037927934})]
     pub fn capacity(&self) -> usize {
         self.0.capacity()
     }
@@ -556,6 +570,7 @@ impl CompactString {
     /// ```
     #[inline]
     #[track_caller]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], additional: usize) ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) && repr::rlen(s.r) + additional <= repr::rcap(v.r) && !repr::is_static(v.r)})]
     pub fn reserve(&mut self, additional: usize) {
         self.try_reserve(additional).unwrap_with_msg()
     }
@@ -565,6 +580,7 @@ impl CompactString {
     /// This method won't panic if the system is out-of-memory, but return an [`ReserveError`]
     /// Otherwise it behaves the same as [`CompactString::reserve()`].
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], additional: usize) -> Result<(), ReserveError>[#ok] ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) && (ok => repr::rlen(s.r) + additional <= repr::rcap(v.r) && !repr::is_static(v.r))})]
     pub fn try_reserve(&mut self, additional: usize) -> Result<(), ReserveError> {
         self.0.reserve(additional)
     }
@@ -579,6 +595,7 @@ impl CompactString {
     /// assert_eq!(s.as_str(), "hello");
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s]) -> &str{t: flux_specs::str_len(t) == repr::rlen(s.r)})]
     pub fn as_str(&self) -> &str {
         self.0.as_str()
     }
@@ -594,6 +611,7 @@ impl CompactString {
     /// assert_eq!(s.as_str(), "HELLO");
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) -> &mut str ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) && repr::rcap(v.r) == repr::ocap(s.r) && !repr::is_static(v.r) && repr::rlen(s.r) <= repr::ocap(s.r)})]
     pub fn as_mut_str(&mut self) -> &mut str {
         let len = self.len();
         let ptr = self.0.as_mut_ptr();
@@ -634,6 +652,7 @@ impl CompactString {
     /// assert_eq!(s, "hello world");
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) -> &mut [mem::MaybeUninit<u8>][repr::ocap(s.r) - repr::rlen(s.r)] ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) && repr::rcap(v.r) == repr::ocap(s.r) && !repr::is_static(v.r) && repr::rlen(s.r) <= repr::ocap(s.r)})]
     pub unsafe fn spare_capacity_mut(&mut self) -> &mut [mem::MaybeUninit<u8>] {
         let len = self.len();
         let ptr = self.0.as_mut_ptr();
@@ -642,6 +661,17 @@ impl CompactString {
         // SAFETY: The buffer is valid for `cap` bytes, and `len <= cap`. `MaybeUninit<u8>` does
         // not require the spare bytes to be initialized.
         unsafe { slice::from_raw_parts_mut(ptr.add(len) as *mut mem::MaybeUninit<u8>, cap - len) }
+    }
+
+    /// CENTRIFUGE: [`Self::spare_capacity_mut`] for a string that's already owned, which stays as
+    /// it is. `convert_while_ascii` calls this in a loop, where flux would lose an inexact index.
+    #[flux_rs::trusted(reason = "ASSUMED: `spare_capacity_mut` is checked, and an owned string has nothing to convert")]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) -> &mut [mem::MaybeUninit<u8>][repr::rcap(s.r) - repr::rlen(s.r)]
+        requires !repr::is_static(s.r) ensures self: CompactString[s])]
+    #[inline(always)]
+    #[allow(dead_code)]
+    unsafe fn owned_spare(&mut self) -> &mut [mem::MaybeUninit<u8>] {
+        self.spare_capacity_mut()
     }
 
     /// Returns a byte slice of the [`CompactString`]'s contents.
@@ -654,6 +684,7 @@ impl CompactString {
     /// assert_eq!(&[104, 101, 108, 108, 111], s.as_bytes());
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s]) -> &[u8][repr::rlen(s.r)])]
     pub fn as_bytes(&self) -> &[u8] {
         self.0.as_slice()
     }
@@ -680,6 +711,7 @@ impl CompactString {
     /// assert_eq!(s, "Hello");
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) -> &mut [u8][repr::rlen(s.r)] ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) && repr::rcap(v.r) == repr::ocap(s.r) && !repr::is_static(v.r) && repr::rlen(s.r) <= repr::ocap(s.r)})]
     pub unsafe fn as_mut_bytes(&mut self) -> &mut [u8] {
         let len = self.len();
         let ptr = self.0.as_mut_ptr();
@@ -701,6 +733,7 @@ impl CompactString {
     ///
     /// assert_eq!("foobar", s);
     /// ```
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], ch: char) ensures self: CompactString)]
     pub fn push(&mut self, ch: char) {
         self.push_str(ch.encode_utf8(&mut [0; 4]));
     }
@@ -720,6 +753,7 @@ impl CompactString {
     /// assert_eq!(s.pop(), None);
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) -> Option<char> ensures self: CompactString{v: repr::rlen(v.r) <= repr::rlen(s.r)})]
     pub fn pop(&mut self) -> Option<char> {
         self.0.pop()
     }
@@ -736,6 +770,7 @@ impl CompactString {
     /// assert_eq!("abc123", s);
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], t: &str[@x]) ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) + flux_specs::str_len(x)})]
     pub fn push_str(&mut self, s: &str) {
         self.0.push_str(s)
     }
@@ -781,6 +816,7 @@ impl CompactString {
     /// c.remove(1);
     /// ```
     #[inline]
+    #[flux_rs::trusted(reason = "ABORT: flux can't relate a `char` from `Chars` to the length of the string (ABORT.md §2)")]
     pub fn remove(&mut self, idx: usize) -> char {
         let len = self.len();
         let substr = &mut self.as_mut_str()[idx..];
@@ -816,6 +852,7 @@ impl CompactString {
     /// * `new_len` must be less than or equal to `capacity()`
     /// * The elements at `old_len..new_len` must be initialized
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], new_len: usize) requires new_len <= repr::rcap(s.r) ensures self: CompactString{v: repr::rlen(v.r) == new_len && repr::is_static(v.r) == repr::is_static(s.r) && (!repr::is_static(s.r) => repr::rcap(v.r) == repr::rcap(s.r))})]
     pub unsafe fn set_len(&mut self, new_len: usize) {
         self.0.set_len(new_len)
     }
@@ -839,6 +876,7 @@ impl CompactString {
     /// assert!(msg.is_heap_allocated());
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s]) -> bool[repr::is_heap(s.r)])]
     pub fn is_heap_allocated(&self) -> bool {
         self.0.is_heap_allocated()
     }
@@ -847,6 +885,7 @@ impl CompactString {
     ///
     /// Returns the range `start..end` as a tuple.
     #[inline]
+    #[flux_rs::spec(fn(&CompactString[@s], _) -> (usize[#a], usize{b: a <= b && b <= repr::rlen(s.r)}))]
     fn ensure_range(&self, range: impl RangeBounds<usize>) -> (usize, usize) {
         #[cold]
         #[inline(never)]
@@ -912,31 +951,42 @@ impl CompactString {
     pub fn replace_range(&mut self, range: impl RangeBounds<usize>, replace_with: &str) {
         let (start, end) = self.ensure_range(range);
         let dest_len = end - start;
-        match dest_len.cmp(&replace_with.len()) {
-            Ordering::Equal => unsafe { self.replace_range_same_size(start, end, replace_with) },
-            Ordering::Greater => unsafe { self.replace_range_shrink(start, end, replace_with) },
-            Ordering::Less => unsafe { self.replace_range_grow(start, end, replace_with) },
+        // CENTRIFUGE: was a `match` on `cmp`, whose `Ordering` flux doesn't relate to the operands.
+        if dest_len == replace_with.len() {
+            unsafe { self.replace_range_same_size(start, end, replace_with) }
+        } else if dest_len > replace_with.len() {
+            unsafe { self.replace_range_shrink(start, end, replace_with) }
+        } else {
+            unsafe { self.replace_range_grow(start, end, replace_with) }
         }
     }
 
     /// Replace into the same size.
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], start: usize, end: usize, replace_with: &str[@x]) requires start <= end && end <= repr::rlen(s.r) && end - start == flux_specs::str_len(x) ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r)})]
     unsafe fn replace_range_same_size(&mut self, start: usize, end: usize, replace_with: &str) {
-        core::ptr::copy_nonoverlapping(
-            replace_with.as_ptr(),
-            self.as_mut_ptr().add(start),
-            end - start,
-        );
+        let src = replace_with.as_ptr();
+        let dst = self.as_mut_ptr().add(start);
+        // `self` is borrowed mutably and `replace_with` isn't.
+        #[cfg(flux)]
+        flux_specs::disjoint(src, dst, end - start);
+        core::ptr::copy_nonoverlapping(src, dst, end - start);
     }
 
     /// Replace, so self.len() gets smaller.
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], start: usize, end: usize, replace_with: &str[@x]) requires start <= end && end <= repr::rlen(s.r) && flux_specs::str_len(x) < end - start ensures self: CompactString)]
     unsafe fn replace_range_shrink(&mut self, start: usize, end: usize, replace_with: &str) {
         let total_len = self.len();
         let dest_len = end - start;
         let new_len = total_len - (dest_len - replace_with.len());
         let amount = total_len - end;
         let data = self.as_mut_ptr();
+        let src = replace_with.as_ptr();
+        let dst = data.add(start);
+        // `self` is borrowed mutably and `replace_with` isn't.
+        #[cfg(flux)]
+        flux_specs::disjoint(src, dst, replace_with.len());
         // first insert the replacement string, overwriting the current content
-        core::ptr::copy_nonoverlapping(replace_with.as_ptr(), data.add(start), replace_with.len());
+        core::ptr::copy_nonoverlapping(src, dst, replace_with.len());
         // then move the tail of the CompactString forward to its new place, filling the gap
         core::ptr::copy(
             data.add(total_len - amount),
@@ -948,6 +998,7 @@ impl CompactString {
     }
 
     /// Replace, so self.len() gets bigger.
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], start: usize, end: usize, replace_with: &str[@x]) requires start <= end && end <= repr::rlen(s.r) && end - start < flux_specs::str_len(x) ensures self: CompactString)]
     unsafe fn replace_range_grow(&mut self, start: usize, end: usize, replace_with: &str) {
         let dest_len = end - start;
         self.reserve(replace_with.len() - dest_len);
@@ -963,8 +1014,13 @@ impl CompactString {
             data.add(new_len - amount),
             amount,
         );
+        let src = replace_with.as_ptr();
+        let dst = data.add(start);
+        // `self` is borrowed mutably and `replace_with` isn't.
+        #[cfg(flux)]
+        flux_specs::disjoint(src, dst, replace_with.len());
         // and lastly insert the replacement string
-        core::ptr::copy_nonoverlapping(replace_with.as_ptr(), data.add(start), replace_with.len());
+        core::ptr::copy_nonoverlapping(src, dst, replace_with.len());
     }
 
     /// Creates a new [`CompactString`] by repeating a string `n` times.
@@ -997,7 +1053,11 @@ impl CompactString {
         } else if n == 1 {
             self.clone()
         } else {
-            let cap = self.len().checked_mul(n).expect("capacity overflow");
+            // CENTRIFUGE: was `.expect(..)`, which flux-core requires never to fail.
+            let cap = match self.len().checked_mul(n) {
+                Some(cap) => cap,
+                None => panic!("capacity overflow"),
+            };
             let mut out = Self::with_capacity(cap);
             (0..n).for_each(|_| out.push_str(self));
             out
@@ -1025,6 +1085,7 @@ impl CompactString {
     /// s.truncate(5);
     /// assert_eq!(s, "Hello");
     /// ```
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], new_len: usize) ensures self: CompactString)]
     pub fn truncate(&mut self, new_len: usize) {
         let s = self.as_str();
         if new_len >= s.len() {
@@ -1035,6 +1096,9 @@ impl CompactString {
             s.is_char_boundary(new_len),
             "new_len must lie on char boundary",
         );
+        // Gives flux `len <= capacity`.
+        #[cfg(flux)]
+        let _ = self.capacity();
         unsafe { self.set_len(new_len) };
     }
 
@@ -1046,6 +1110,7 @@ impl CompactString {
 
     /// Converts a mutable [`CompactString`] to a raw pointer.
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) -> *mut{p: flux_specs::readable(p, repr::ocap(s.r))} u8 ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) && repr::rcap(v.r) == repr::ocap(s.r) && !repr::is_static(v.r) && repr::rlen(s.r) <= repr::ocap(s.r)})]
     pub fn as_mut_ptr(&mut self) -> *mut u8 {
         self.0.as_mut_ptr()
     }
@@ -1062,6 +1127,7 @@ impl CompactString {
     /// s.insert_str(5, ", world");
     /// assert_eq!(s, "Hello, world!");
     /// ```
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], idx: usize, string: &str[@x]) ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r) + flux_specs::str_len(x)})]
     pub fn insert_str(&mut self, idx: usize, string: &str) {
         assert!(self.is_char_boundary(idx), "idx must lie on char boundary");
 
@@ -1080,8 +1146,13 @@ impl CompactString {
                 new_len - idx - string.len(),
             );
 
+            let src = string.as_ptr();
+            let dst = data.add(idx);
+            // `self` is borrowed mutably and `string` isn't.
+            #[cfg(flux)]
+            flux_specs::disjoint(src, dst, string.len());
             // then insert the new bytes
-            core::ptr::copy_nonoverlapping(string.as_ptr(), data.add(idx), string.len());
+            core::ptr::copy_nonoverlapping(src, dst, string.len());
 
             // and lastly resize the string
             self.set_len(new_len);
@@ -1100,6 +1171,7 @@ impl CompactString {
     /// s.insert(5, ',');
     /// assert_eq!(s, "Hello, world!");
     /// ```
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], idx: usize, ch: char) ensures self: CompactString)]
     pub fn insert(&mut self, idx: usize, ch: char) {
         self.insert_str(idx, ch.encode_utf8(&mut [0; 4]));
     }
@@ -1119,7 +1191,11 @@ impl CompactString {
     /// assert_eq!(s, "");
     /// assert_eq!(s.capacity(), 49);
     /// ```
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) ensures self: CompactString{v: repr::rlen(v.r) == 0})]
     pub fn clear(&mut self) {
+        // Gives flux `0 <= capacity`.
+        #[cfg(flux)]
+        let _ = self.capacity();
         unsafe { self.set_len(0) };
     }
 
@@ -1142,6 +1218,7 @@ impl CompactString {
     /// assert_eq!(w, ", world!");
     /// assert_eq!(s, "Hello");
     /// ```
+    #[flux_rs::trusted(reason = "ABORT: `str` slicing has no spec, so flux can't see the bound its panic establishes (ABORT.md §7)")]
     pub fn split_off(&mut self, at: usize) -> Self {
         if let Some(s) = self.as_static_str() {
             let result = Self::const_new(&s[at..]);
@@ -1217,6 +1294,7 @@ impl CompactString {
     /// assert_eq!(s.capacity(), 3 * std::mem::size_of::<usize>());
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s], min_capacity: usize) ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r)})]
     pub fn shrink_to(&mut self, min_capacity: usize) {
         self.0.shrink_to(min_capacity);
     }
@@ -1254,6 +1332,7 @@ impl CompactString {
     /// assert_eq!(s.capacity(), 3 * std::mem::size_of::<usize>());
     /// ```
     #[inline]
+    #[flux_rs::spec(fn(self: &strg CompactString[@s]) ensures self: CompactString{v: repr::rlen(v.r) == repr::rlen(s.r)})]
     pub fn shrink_to_fit(&mut self) {
         self.0.shrink_to(0);
     }
@@ -1277,6 +1356,7 @@ impl CompactString {
     ///
     /// assert_eq!(s, "b𝄞€");
     /// ```
+    #[flux_rs::trusted(reason = "ABORT: flux can't relate a `char` from `Chars` to the length of the string (ABORT.md §2)")]
     pub fn retain(&mut self, mut predicate: impl FnMut(char) -> bool) {
         // We iterate over the string, and copy character by character.
 
@@ -1318,6 +1398,7 @@ impl CompactString {
         }
 
         impl Drop for SetLenOnDrop<'_> {
+            #[flux_rs::trusted(reason = "ABORT: flux can't relate a `char` from `Chars` to the length of the string (ABORT.md §2)")]
             fn drop(&mut self) {
                 // SAFETY: We know that the index is a valid position to break the string.
                 unsafe { self.self_.set_len(self.dst_idx) };
@@ -1363,6 +1444,7 @@ impl CompactString {
     ///     CompactString::from(String::from_utf8_lossy(broken)),
     /// );
     /// ```
+    #[flux_rs::trusted(reason = "ABORT: flux can't relate a `Utf8Error` to the bytes it came from (ABORT.md §5)")]
     pub fn from_utf8_lossy(v: &[u8]) -> Self {
         // Fast path: the entire input is valid UTF-8, so copy it in a single shot. This is the
         // common case, and mirrors `String::from_utf8_lossy`, which borrows the input here.
@@ -1826,6 +1908,7 @@ impl CompactString {
         }
         return s;
 
+        #[flux_rs::trusted(reason = "ABORT: flux can't relate a `char` from `Chars` to the length of the string (ABORT.md §2)")]
         fn map_uppercase_sigma(from: &str, i: usize, to: &mut CompactString) {
             // See https://www.unicode.org/versions/Unicode7.0.0/ch03.pdf#G33992
             // for the definition of `Final_Sigma`.
@@ -1957,7 +2040,7 @@ fn convert_while_ascii(b: &[u8], convert: fn(&u8) -> u8) -> CompactString {
         while i + N <= b.len() {
             // Safety: we have checks the sizes `b` and `out` to know that our
             let in_chunk = b.get_unchecked(i..i + N);
-            let out_chunk = out.spare_capacity_mut().get_unchecked_mut(i..i + N);
+            let out_chunk = out.owned_spare().get_unchecked_mut(i..i + N);
 
             let mut bits = 0;
             for j in 0..MAGIC_UNROLL {
@@ -2005,9 +2088,11 @@ impl Default for CompactString {
     }
 }
 
+#[flux_rs::assoc(fn as_deref(v: CompactString, target: str) -> bool { true })]
 impl Deref for CompactString {
     type Target = str;
 
+    #[flux_rs::spec(fn(&CompactString[@s]) -> &str{t: flux_specs::str_len(t) == repr::rlen(s.r)})]
     #[inline]
     fn deref(&self) -> &str {
         self.as_str()
@@ -2015,6 +2100,8 @@ impl Deref for CompactString {
 }
 
 impl DerefMut for CompactString {
+    #[flux_rs::trusted(reason = "ABORT: flux-core's `DerefMut` keeps the index of `self`, but this turns a static string into an owned one (ABORT.md §8)")]
+    #[flux_rs::spec(fn(self: &mut CompactString[@s]) -> &mut str)]
     #[inline]
     fn deref_mut(&mut self) -> &mut str {
         self.as_mut_str()
@@ -2240,6 +2327,7 @@ impl From<CompactString> for alloc::rc::Rc<str> {
 
 #[cfg(feature = "std")]
 impl From<CompactString> for Box<dyn std::error::Error + Send + Sync> {
+    #[flux_rs::trusted(reason = "ICE: checker.rs:1822 unsupported unsize cast to `Box<dyn Error>`")]
     fn from(value: CompactString) -> Self {
         struct StringError(CompactString);
 
@@ -2269,6 +2357,7 @@ impl From<CompactString> for Box<dyn std::error::Error + Send + Sync> {
 
 #[cfg(feature = "std")]
 impl From<CompactString> for Box<dyn std::error::Error> {
+    #[flux_rs::trusted(reason = "ICE: checker.rs:1822 unsupported unsize cast to `Box<dyn Error>`")]
     fn from(value: CompactString) -> Self {
         let err1: Box<dyn std::error::Error + Send + Sync> = From::from(value);
         let err2: Box<dyn std::error::Error> = err1;
@@ -2559,6 +2648,7 @@ impl fmt::Display for Drain<'_> {
 }
 
 impl Drop for Drain<'_> {
+    #[flux_rs::trusted(reason = "ABORT: a `Drain` holds a raw pointer, which has no index for the range to prove (ABORT.md §6)")]
     #[inline]
     fn drop(&mut self) {
         // SAFETY: Drain keeps a mutable reference to compact_string, so one one else can access
@@ -2585,6 +2675,7 @@ impl Deref for Drain<'_> {
     }
 }
 
+#[flux_rs::trusted_impl(reason = "ICE: infer.rs:965 incompatible types `&strg Drain` - `&mut Drain` (#1821)")]
 impl Iterator for Drain<'_> {
     type Item = char;
 

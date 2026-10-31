@@ -20,6 +20,7 @@ const DEC_DIGITS_LUT: &[u8] = b"\
 macro_rules! impl_IntoRepr {
     ($t:ident, $conv_ty:ident) => {
         impl IntoRepr for $t {
+            #[flux_rs::trusted(reason = "ABORT: flux can't relate the digits written to `num_chars` (ABORT.md §4)")]
             fn into_repr(self) -> Result<Repr, ToCompactStringError> {
                 // The formatted value is at most 20 characters (`i64::MIN`). On 64-bit that always
                 // fits inline, so we can write straight into an `InlineBuffer` and skip the
