@@ -43,6 +43,9 @@ flux_rs::defs! {
         (x == 1 && y == 21) => [<<](x, y) == 2097152
     }
     qualifier UpToMaxSize(v: int) { v <= 24 }
+    // The bounds of the two loops in `convert_while_ascii`.
+    qualifier IsUnroll(v: int) { v == 2 }
+    qualifier IsChunk(v: int) { v == 16 }
 }
 
 mod features;
@@ -2026,6 +2029,31 @@ impl CompactString {
 /// Returns a vec with the converted bytes.
 ///
 /// Copied from https://doc.rust-lang.org/nightly/src/alloc/str.rs.html#623-666
+/// CENTRIFUGE: was `.cast::<usize>()` inline in `convert_while_ascii`. Its generic result leaves
+/// flux treating the rest of the function as dead (flux #1856), so nothing after it was checked.
+#[flux_rs::trusted(reason = "ASSUMED: a pointer cast to `usize` keeps the bounds; the bound is checked at each call")]
+#[flux_rs::spec(fn(s: &[u8][@n], j: usize) -> usize requires 8 * (j + 1) <= n)]
+#[inline(always)]
+unsafe fn word_at(s: &[u8], j: usize) -> usize {
+    (s.as_ptr() as *const usize).add(j).read_unaligned()
+}
+
+/// CENTRIFUGE: `get_unchecked` with a range, which has no length in flux.
+#[flux_rs::trusted(reason = "ASSUMED: a range of `len` gives `len` items; the bound is checked at each call")]
+#[flux_rs::spec(fn(s: &[T][@n], i: usize, len: usize) -> &[T][len] requires i + len <= n)]
+#[inline(always)]
+unsafe fn chunk<T>(s: &[T], i: usize, len: usize) -> &[T] {
+    s.get_unchecked(i..i + len)
+}
+
+/// CENTRIFUGE: see [`chunk`].
+#[flux_rs::trusted(reason = "ASSUMED: a range of `len` gives `len` items; the bound is checked at each call")]
+#[flux_rs::spec(fn(s: &mut [T][@n], i: usize, len: usize) -> &mut [T][len] requires i + len <= n)]
+#[inline(always)]
+unsafe fn chunk_mut<T>(s: &mut [T], i: usize, len: usize) -> &mut [T] {
+    s.get_unchecked_mut(i..i + len)
+}
+
 #[inline]
 fn convert_while_ascii(b: &[u8], convert: fn(&u8) -> u8) -> CompactString {
     let mut out = CompactString::with_capacity(b.len());
@@ -2039,14 +2067,14 @@ fn convert_while_ascii(b: &[u8], convert: fn(&u8) -> u8) -> CompactString {
     unsafe {
         while i + N <= b.len() {
             // Safety: we have checks the sizes `b` and `out` to know that our
-            let in_chunk = b.get_unchecked(i..i + N);
-            let out_chunk = out.owned_spare().get_unchecked_mut(i..i + N);
+            let in_chunk = chunk(b, i, N);
+            let out_chunk = chunk_mut(out.owned_spare(), i, N);
 
             let mut bits = 0;
             for j in 0..MAGIC_UNROLL {
                 // read the bytes 1 usize at a time (unaligned since we haven't checked the
                 // alignment) safety: in_chunk is valid bytes in the range
-                bits |= in_chunk.as_ptr().cast::<usize>().add(j).read_unaligned();
+                bits |= word_at(in_chunk, j);
             }
             // if our chunks aren't ascii, then return only the prior bytes as init
             if bits & NONASCII_MASK != 0 {
