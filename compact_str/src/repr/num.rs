@@ -109,7 +109,7 @@ macro_rules! impl_IntoRepr {
 
                 // SAFETY: the leading `num_digits` bytes are ASCII digits (with an optional `-`),
                 // and the last byte is a valid inline length marker.
-                Ok(Repr::from_inline(InlineBuffer(buffer)))
+                Ok(Repr::from_inline(InlineBuffer(buffer), num_digits))
             }
         }
     };

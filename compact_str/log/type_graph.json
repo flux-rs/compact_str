@@ -1,0 +1,196 @@
+[
+  {
+    "uid": 0,
+    "path": "repr::heap::heap_capacity::HeapBufferInnerHeapCapacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 441,
+      "start_col": 5,
+      "end_line": 441,
+      "end_col": 39
+    },
+    "deps": []
+  },
+  {
+    "uid": 1,
+    "path": "repr::heap::inline_capacity::HeapBufferInnerInlineCapacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 479,
+      "start_col": 5,
+      "end_line": 479,
+      "end_col": 41
+    },
+    "deps": []
+  },
+  {
+    "uid": 2,
+    "path": "repr::inline::InlineBuffer",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/inline.rs",
+      "start_line": 6,
+      "start_col": 1,
+      "end_line": 6,
+      "end_col": 31
+    },
+    "deps": []
+  },
+  {
+    "uid": 3,
+    "path": "repr::capacity::Capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 55,
+      "start_col": 1,
+      "end_line": 55,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 4,
+    "path": "repr::last_utf8_char::LastByte",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/last_utf8_char.rs",
+      "start_line": 12,
+      "start_col": 1,
+      "end_line": 12,
+      "end_col": 25
+    },
+    "deps": []
+  },
+  {
+    "uid": 5,
+    "path": "repr::static_str::StaticStr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/static_str.rs",
+      "start_line": 11,
+      "start_col": 1,
+      "end_line": 11,
+      "end_col": 28
+    },
+    "deps": []
+  },
+  {
+    "uid": 6,
+    "path": "Utf16Error",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2511,
+      "start_col": 1,
+      "end_line": 2511,
+      "end_col": 22
+    },
+    "deps": []
+  },
+  {
+    "uid": 7,
+    "path": "ReserveError",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2611,
+      "start_col": 1,
+      "end_line": 2611,
+      "end_col": 24
+    },
+    "deps": []
+  },
+  {
+    "uid": 8,
+    "path": "repr::heap::HeapBuffer",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 26,
+      "start_col": 1,
+      "end_line": 26,
+      "end_col": 29
+    },
+    "deps": [
+      3
+    ]
+  },
+  {
+    "uid": 9,
+    "path": "repr::Repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 47,
+      "start_col": 1,
+      "end_line": 47,
+      "end_col": 23
+    },
+    "deps": [
+      4
+    ]
+  },
+  {
+    "uid": 10,
+    "path": "ToCompactStringError",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2626,
+      "start_col": 1,
+      "end_line": 2626,
+      "end_col": 30
+    },
+    "deps": [
+      7
+    ]
+  },
+  {
+    "uid": 11,
+    "path": "CompactString",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 129,
+      "start_col": 1,
+      "end_line": 129,
+      "end_col": 25
+    },
+    "deps": [
+      9
+    ]
+  },
+  {
+    "uid": 12,
+    "path": "CompactString::retain::SetLenOnDrop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1271,
+      "start_col": 9,
+      "end_line": 1271,
+      "end_col": 32
+    },
+    "deps": [
+      11
+    ]
+  },
+  {
+    "uid": 13,
+    "path": "<impl core::convert::From<CompactString> for std::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>::from::StringError",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2232,
+      "start_col": 9,
+      "end_line": 2232,
+      "end_col": 27
+    },
+    "deps": [
+      11
+    ]
+  },
+  {
+    "uid": 14,
+    "path": "Drain",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2525,
+      "start_col": 1,
+      "end_line": 2525,
+      "end_col": 21
+    },
+    "deps": [
+      11
+    ]
+  }
+]

@@ -41,21 +41,65 @@ pub(crate) const STATIC_STR_MASK: u8 = LastByte::Static as u8;
 /// by `LENGTH_MASK`
 pub(crate) const LENGTH_MASK: u8 = 0b11000000;
 
+flux_rs::defs! {
+    // A `Capacity` is its value with `LastByte::Heap` in the top byte (64-bit, little-endian).
+    fn cap_bits(c: int) -> int { c + 15564440312192434176 }
+    fn bits_cap(b: int) -> int { b - 15564440312192434176 }
+
+    fn is_heap(r: Repr) -> bool { r.last == 216 }
+    fn is_static(r: Repr) -> bool { r.last == 217 }
+
+    // What the last byte of an inline string says about its length.
+    fn inline_len(last: int) -> int {
+        if 192 <= last && last <= 215 { last - 192 } else { 24 }
+    }
+    fn rlen(r: Repr) -> int {
+        if r.last >= 216 { r.hlen } else { inline_len(r.last) }
+    }
+    // The capacity bytes of a heap string: the second word's top half, then its next bytes.
+    fn hcap(r: Repr) -> int { r.c0 + 4294967296 * r.c1 + 281474976710656 * r.c2 }
+    fn rcap(r: Repr) -> int {
+        if is_heap(r) { hcap(r) } else { if is_static(r) { r.hlen } else { 24 } }
+    }
+    // The capacity of a string of `n` bytes that `Repr::new` built.
+    fn new_cap(n: int) -> int { if n <= 24 { 24 } else { heap::alloc_cap(n) } }
+    // The capacity after `Repr::as_mut_ptr`, which copies a `&'static str`.
+    fn ocap(r: Repr) -> int { if is_static(r) { new_cap(r.hlen) } else { rcap(r) } }
+}
+
 const EMPTY: Repr = Repr::const_new("");
 
+/// CENTRIFUGE: flux can't index a `const`.
+#[flux_rs::trusted(reason = "ASSUMED: `EMPTY` is an empty inline string")]
+#[flux_rs::spec(fn() -> Repr{v: v.last == 192})]
+#[inline(always)]
+const fn empty() -> Repr {
+    EMPTY
+}
+
 #[repr(C)]
+#[flux_rs::refined_by(hlen: int, c0: int, c1: int, c2: int, last: int)]
+#[flux_rs::invariant(0 <= hlen && 0 <= c0 && 0 <= c1 && 0 <= c2 && 0 <= last && last <= 217)]
+#[flux_rs::invariant(last == 216 => hlen <= c0 + 4294967296 * c1 + 281474976710656 * c2)]
+#[flux_rs::invariant(last == 216 => c0 + 4294967296 * c1 + 281474976710656 * c2 <= 72057594037927934)]
+#[flux_rs::invariant(last == 217 => hlen <= 72057594037927934)]
 pub(crate) struct Repr(
     /// We have a pointer in the representation to properly carry provenance.
     *const (),
     /// Then we need two `usize`s (aka WORDs) of data, for the first we just define a `usize`...
+    #[flux_rs::field(usize[hlen])]
     usize,
     /// ...but the second we breakup into multiple pieces...
     #[cfg(target_pointer_width = "64")]
+    #[flux_rs::field(u32[c0])]
     u32,
+    #[flux_rs::field(u16[c1])]
     u16,
+    #[flux_rs::field(u8[c2])]
     u8,
     /// ...so that the last byte can be a [`LastByte`], which allows the compiler to see a niche
     /// value.
+    #[flux_rs::field(LastByte[last])]
     LastByte,
 );
 static_assertions::assert_eq_size!([u8; MAX_SIZE], Repr);
@@ -64,16 +108,17 @@ unsafe impl Send for Repr {}
 unsafe impl Sync for Repr {}
 
 impl Repr {
+    #[flux_rs::spec(fn(text: &str[@t]) -> Result<Repr{v: rlen(v) == crate::flux_specs::str_len(t) && rcap(v) == new_cap(crate::flux_specs::str_len(t)) && !is_static(v)}, ReserveError>)]
     #[inline]
     pub(crate) fn new(text: &str) -> Result<Self, ReserveError> {
         let len = text.len();
 
         if len == 0 {
-            Ok(EMPTY)
+            Ok(empty())
         } else if len <= MAX_SIZE {
             // SAFETY: We checked that the length of text is less than or equal to MAX_SIZE
             let inline = unsafe { InlineBuffer::new(text) };
-            Repr::from_inline_ok(inline)
+            Repr::from_inline_ok(inline, len)
         } else {
             HeapBuffer::new(text).map(Repr::from_heap)
         }
@@ -85,6 +130,7 @@ impl Repr {
     /// check from the hot inline path.
     #[inline]
     #[track_caller]
+    #[flux_rs::spec(fn(text: &str[@t]) -> Repr{v: rlen(v) == crate::flux_specs::str_len(t) && rcap(v) == new_cap(crate::flux_specs::str_len(t)) && !is_static(v)})]
     pub(crate) fn new_panic(text: &str) -> Self {
         let len = text.len();
 
@@ -97,7 +143,7 @@ impl Repr {
         if len <= MAX_SIZE {
             // SAFETY: We checked that the length of text is less than or equal to MAX_SIZE
             let inline = unsafe { InlineBuffer::new(text) };
-            Repr::from_inline(inline)
+            Repr::from_inline(inline, len)
         } else {
             // N.B. `alloc_copy_panic` is `#[inline(always)]`, so the `HeapBuffer` it
             // returns is assembled right here at the callsite. The only value crossing
@@ -111,11 +157,12 @@ impl Repr {
         }
     }
 
+    #[flux_rs::spec(fn(text: &str[@t]) -> Repr{v: rlen(v) == crate::flux_specs::str_len(t)})]
     #[inline]
     pub(crate) const fn const_new(text: &'static str) -> Self {
         if text.len() <= MAX_SIZE {
             let inline = InlineBuffer::new_const(text);
-            Repr::from_inline(inline)
+            Repr::from_inline(inline, text.len())
         } else {
             let repr = StaticStr::new(text);
             Repr::from_static(repr)
@@ -123,10 +170,11 @@ impl Repr {
     }
 
     /// Create a [`Repr`] with the provided `capacity`
+    #[flux_rs::spec(fn(capacity: usize) -> Result<Repr{v: rlen(v) == 0 && !is_static(v) && capacity <= rcap(v)}, ReserveError>)]
     #[inline]
     pub(crate) fn with_capacity(capacity: usize) -> Result<Self, ReserveError> {
         if capacity <= MAX_SIZE {
-            Ok(EMPTY)
+            Ok(empty())
         } else {
             HeapBuffer::with_capacity(capacity).map(Repr::from_heap)
         }
@@ -158,13 +206,17 @@ impl Repr {
         // Write the bytes into the uninitialized buffer without first creating a reference to
         // that memory.
         //
+        let ptr = repr.as_mut_ptr();
+        // `repr` is new.
+        #[cfg(flux)]
+        crate::flux_specs::disjoint(bytes.as_ptr(), ptr, bytes_len);
+
         // SAFETY:
         // * `repr` was created with capacity for at least `bytes_len` bytes.
         // * `bytes` is valid for reads of `bytes_len` bytes.
         // * The newly allocated buffer does not overlap `bytes`.
         unsafe {
-            repr.as_mut_ptr()
-                .copy_from_nonoverlapping(bytes.as_ptr(), bytes_len)
+            ptr.copy_from_nonoverlapping(bytes.as_ptr(), bytes_len)
         };
 
         // Set the length of the Repr
@@ -179,6 +231,7 @@ impl Repr {
     ///
     /// Note: If the provided [`String`] is >16 MB and we're on a 32-bit arch, we'll copy the
     /// `String`.
+    #[flux_rs::spec(fn(s: String[@t], should_inline: bool) -> Result<Repr{v: rlen(v) == crate::flux_specs::str_len(t) && !is_static(v)}, ReserveError>)]
     #[inline]
     pub(crate) fn from_string(s: String, should_inline: bool) -> Result<Self, ReserveError> {
         let og_cap = s.capacity();
@@ -193,21 +246,27 @@ impl Repr {
             let (ptr, cap) = HeapBuffer::alloc_copy(s.as_str())?;
             Ok(Repr::from_heap(HeapBuffer { ptr, len, cap }))
         } else if og_cap == 0 {
-            Ok(EMPTY)
+            Ok(empty())
         } else if should_inline && s.len() <= MAX_SIZE {
             // SAFETY: Checked to make sure the string would fit inline
             let inline = unsafe { InlineBuffer::new(s.as_str()) };
-            Repr::from_inline_ok(inline)
+            Repr::from_inline_ok(inline, s.len())
         } else {
-            let mut s = mem::ManuallyDrop::new(s.into_bytes());
-            let len = s.len();
-            let raw_ptr = s.as_mut_ptr();
-
-            let ptr = ptr::NonNull::new(raw_ptr).expect("string with capacity has null ptr?");
-            let heap = HeapBuffer { ptr, len, cap };
-
-            Ok(Repr::from_heap(heap))
+            Ok(Repr::from_heap(Self::take_string(s, cap)))
         }
+    }
+
+    #[flux_rs::trusted(reason = "ASSUMED: flux has no index for the `Vec` pointer of a `String`")]
+    #[flux_rs::spec(fn(s: String[@t], cap: Capacity[@b]) -> HeapBuffer[crate::flux_specs::str_len(t), b]
+        requires crate::flux_specs::str_len(t) <= bits_cap(b) && 0 < bits_cap(b))]
+    #[inline(always)]
+    fn take_string(s: String, cap: Capacity) -> HeapBuffer {
+        let mut s = mem::ManuallyDrop::new(s.into_bytes());
+        let len = s.len();
+        let raw_ptr = s.as_mut_ptr();
+
+        let ptr = ptr::NonNull::new(raw_ptr).expect("string with capacity has null ptr?");
+        HeapBuffer { ptr, len, cap }
     }
 
     /// Converts a [`Repr`] into a [`String`], in `O(1)` time, if possible
@@ -252,6 +311,8 @@ impl Repr {
 
     /// Reserves at least `additional` bytes. If there is already enough capacity to store
     /// `additional` bytes this is a no-op
+    #[flux_rs::spec(fn(self: &strg Repr[@r], additional: usize) -> Result<(), ReserveError>[#ok]
+        ensures self: Repr{v: rlen(v) == rlen(r) && (ok => rlen(r) + additional <= rcap(v) && !is_static(v))})]
     #[inline]
     pub(crate) fn reserve(&mut self, additional: usize) -> Result<(), ReserveError> {
         let len = self.len();
@@ -268,7 +329,7 @@ impl Repr {
             //
             // SAFETY: Our needed_capacity is >= our length, which is <= than MAX_SIZE
             let inline = unsafe { InlineBuffer::new(self.as_str()) };
-            *self = Repr::from_inline(inline);
+            *self = Repr::from_inline(inline, len);
             Ok(())
         } else if !self.is_heap_allocated() {
             // We're not heap allocated, but need to be, create a HeapBuffer
@@ -279,12 +340,10 @@ impl Repr {
             // We're already heap allocated, but we need more capacity
             //
             // SAFETY: We checked above to see if we're heap allocated
-            let heap_buffer = unsafe { self.as_mut_heap() };
-
             // To reduce allocations, we amortize our growth
             let amortized_capacity = heap::amortized_growth(len, additional);
             // Attempt to grow our capacity, allocating a new HeapBuffer on failure
-            if heap_buffer.realloc(amortized_capacity).is_err() {
+            if unsafe { self.heap_realloc(amortized_capacity) }.is_err() {
                 // Create a new HeapBuffer
                 let heap = HeapBuffer::with_additional(self.as_str(), additional)?;
                 *self = Repr::from_heap(heap);
@@ -294,6 +353,7 @@ impl Repr {
         }
     }
 
+    #[flux_rs::spec(fn(self: &strg Repr[@r], min_capacity: usize) ensures self: Repr{v: rlen(v) == rlen(r)})]
     pub(crate) fn shrink_to(&mut self, min_capacity: usize) {
         // Note: We can't shrink the inline variant since it's buffer is a fixed size
         // or the static str variant since it is just a pointer, so we only
@@ -303,7 +363,7 @@ impl Repr {
         }
 
         // SAFETY: We just checked the discriminant to make sure we're heap allocated
-        let heap = unsafe { self.as_mut_heap() };
+        let heap = unsafe { self.as_heap() };
 
         let old_capacity = heap.capacity();
         let new_capacity = heap.len.max(min_capacity);
@@ -312,17 +372,16 @@ impl Repr {
             // Inline string if possible.
 
             let mut inline = InlineBuffer::empty();
+            let dst = inline.0.as_mut_ptr();
+            // The source is on the heap and `inline` is a local.
+            #[cfg(flux)]
+            crate::flux_specs::disjoint(heap.ptr.as_ptr(), dst, heap.len);
             // SAFETY: Our src is on the heap, so it does not overlap with our new inline
             // buffer, and the src is a `Repr` so we can assume it's valid UTF-8
-            unsafe {
-                inline
-                    .0
-                    .as_mut_ptr()
-                    .copy_from_nonoverlapping(heap.ptr.as_ptr(), heap.len)
-            };
+            unsafe { dst.copy_from_nonoverlapping(heap.ptr.as_ptr(), heap.len) };
             // SAFETY: The src we wrote from was a `Repr` which we can assume is valid UTF-8
             unsafe { inline.set_len(heap.len) }
-            *self = Repr::from_inline(inline);
+            *self = Repr::from_inline(inline, heap.len);
             return;
         }
 
@@ -332,7 +391,7 @@ impl Repr {
         }
 
         // Try to shrink in-place.
-        if heap.realloc(new_capacity).is_ok() {
+        if unsafe { self.heap_realloc(new_capacity) }.is_ok() {
             return;
         }
 
@@ -344,6 +403,21 @@ impl Repr {
         }
     }
 
+    /// CENTRIFUGE: the start of `push_str`, because flux can't keep the index of `self` over the
+    /// join of the `if` there.
+    #[flux_rs::spec(fn(self: &strg Repr[@r], len: usize, str_len: usize) requires len == rlen(r) && str_len <= 72057594037927934
+        ensures self: Repr{v: rlen(v) == len && len + str_len <= rcap(v) && !is_static(v)})]
+    #[inline(always)]
+    fn make_room(&mut self, len: usize, str_len: usize) {
+        // Only call the (out-of-line) grow path when we actually need to; the common append
+        // already has room. A `&'static str` always has to be converted first.
+        if self.is_static_str() || len + str_len > self.capacity() {
+            self.reserve(str_len).unwrap_with_msg();
+            return;
+        }
+    }
+
+    #[flux_rs::spec(fn(self: &strg Repr[@r], s: &str[@t]) ensures self: Repr{v: rlen(v) == rlen(r) + crate::flux_specs::str_len(t) && rlen(r) <= rlen(v)})]
     #[inline]
     pub(crate) fn push_str(&mut self, s: &str) {
         // If `s` is empty, then there's no reason to reserve or push anything
@@ -355,11 +429,7 @@ impl Repr {
         let len = self.len();
         let str_len = s.len();
 
-        // Only call the (out-of-line) grow path when we actually need to; the common append
-        // already has room. A `&'static str` always has to be converted first.
-        if self.is_static_str() || len + str_len > self.capacity() {
-            self.reserve(str_len).unwrap_with_msg();
-        }
+        self.make_room(len, str_len);
 
         // Copy the string into the spare capacity without first creating a reference to the
         // uninitialized memory.
@@ -368,11 +438,11 @@ impl Repr {
         // * `reserve` guarantees at least `len + str_len` bytes of capacity.
         // * `s` is valid for reads of `str_len` bytes.
         // * The mutable borrow of `self` guarantees the source and destination do not overlap.
-        unsafe {
-            self.as_mut_ptr()
-                .add(len)
-                .copy_from_nonoverlapping(s.as_ptr(), str_len)
-        };
+        let dst = unsafe { self.as_mut_ptr().add(len) };
+        // `self` is borrowed mutably and `s` isn't.
+        #[cfg(flux)]
+        crate::flux_specs::disjoint(s.as_ptr(), dst, str_len);
+        unsafe { dst.copy_from_nonoverlapping(s.as_ptr(), str_len) };
 
         // Increment the length of our string
         //
@@ -381,6 +451,8 @@ impl Repr {
         unsafe { self.set_len(len + str_len) };
     }
 
+    #[flux_rs::trusted(reason = "ABORT: flux can't relate a `char` from `Chars` to the length of the string (ABORT.md §2)")]
+    #[flux_rs::spec(fn(self: &strg Repr[@r]) -> Option<char> ensures self: Repr{v: rlen(v) <= rlen(r)})]
     #[inline]
     pub(crate) fn pop(&mut self) -> Option<char> {
         let ch = self.as_str().chars().next_back()?;
@@ -392,6 +464,8 @@ impl Repr {
     }
 
     /// Returns the string content, and only the string content, as a slice of bytes.
+    #[flux_rs::trusted(reason = "ASSUMED: the pointer is `self` or the heap word; flux can't cast through `*const ()`")]
+    #[flux_rs::spec(fn(&Repr[@r]) -> &[u8][rlen(r)])]
     #[inline]
     pub(crate) fn as_slice(&self) -> &[u8] {
         // initially has the value of the stack pointer, conditionally becomes the heap pointer
@@ -416,6 +490,7 @@ impl Repr {
         unsafe { core::slice::from_raw_parts(pointer, length) }
     }
 
+    #[flux_rs::spec(fn(&Repr[@r]) -> &str{s: crate::flux_specs::str_len(s) == rlen(r)})]
     #[inline]
     pub(crate) fn as_str(&self) -> &str {
         // SAFETY: A `Repr` contains valid UTF-8
@@ -423,6 +498,7 @@ impl Repr {
     }
 
     /// Returns the length of the string that we're storing
+    #[flux_rs::spec(fn(&Repr[@r]) -> usize{v: v == rlen(r) && v <= rcap(r) && rcap(r) <= 72057594037927934})]
     #[inline]
     pub(crate) fn len(&self) -> usize {
         // This ugly looking code results in two conditional moves and only one comparison, without
@@ -453,6 +529,7 @@ impl Repr {
     }
 
     /// Returns `true` if the length is 0, `false` otherwise
+    #[flux_rs::spec(fn(&Repr[@r]) -> bool[rlen(r) == 0])]
     #[inline]
     pub(crate) fn is_empty(&self) -> bool {
         let len_heap = ensure_read(self.1);
@@ -465,8 +542,10 @@ impl Repr {
     }
 
     /// Returns the overall capacity of the underlying buffer
+    #[flux_rs::spec(fn(&Repr[@r]) -> usize{v: v == rcap(r) && 0 <= rlen(r) && rlen(r) <= v && v <= 72057594037927934})]
     #[inline]
     pub(crate) fn capacity(&self) -> usize {
+        #[flux_rs::spec(fn(&Repr[@r]) -> usize[rcap(r)] requires is_heap(r))]
         #[cold]
         fn heap_capacity(this: &Repr) -> usize {
             // SAFETY: We just checked the discriminant to make sure we're heap allocated
@@ -483,27 +562,37 @@ impl Repr {
         }
     }
 
+    #[flux_rs::spec(fn(&Repr[@r]) -> bool[is_heap(r)])]
     #[inline(always)]
     pub(crate) fn is_heap_allocated(&self) -> bool {
         let last_byte = self.last_byte();
         last_byte == HEAP_MASK
     }
 
+    #[flux_rs::spec(fn(&Repr[@r]) -> bool[is_static(r)])]
     #[inline(always)]
     const fn is_static_str(&self) -> bool {
         let last_byte = self.last_byte();
         last_byte == STATIC_STR_MASK
     }
 
+    #[flux_rs::spec(fn(&Repr[@r]) -> Option<&str{s: crate::flux_specs::str_len(s) == r.hlen}>[is_static(r)])]
     #[inline]
     pub(crate) const fn as_static_str(&self) -> Option<&'static str> {
         if self.is_static_str() {
             // SAFETY: A `Repr` is transmuted from `StaticStr`
-            let s: &StaticStr = unsafe { &*(self as *const Self as *const StaticStr) };
+            let s: &StaticStr = unsafe { self.as_static_view() };
             Some(s.get_text())
         } else {
             None
         }
+    }
+
+    #[flux_rs::trusted(reason = "ASSUMED: a pointer cast; the discriminant says this is a `StaticStr`")]
+    #[flux_rs::spec(fn(&Repr[@r]) -> &StaticStr[r.hlen] requires is_static(r))]
+    #[inline(always)]
+    const unsafe fn as_static_view(&self) -> &StaticStr {
+        &*(self as *const Self as *const StaticStr)
     }
 
     #[inline]
@@ -521,8 +610,12 @@ impl Repr {
     ///
     /// The pointer is valid for writes up to [`Repr::capacity`], but only the first [`Repr::len`]
     /// bytes are guaranteed to be initialized.
+    #[flux_rs::spec(fn(self: &strg Repr[@r]) -> *mut{p: crate::flux_specs::readable(p, ocap(r))} u8
+        ensures self: Repr{v: rlen(v) == rlen(r) && rcap(v) == ocap(r) && !is_static(v)})]
     #[inline]
     pub(crate) fn as_mut_ptr(&mut self) -> *mut u8 {
+        #[flux_rs::spec(fn(this: &strg Repr[@r])
+            ensures this: Repr{v: rlen(v) == rlen(r) && rcap(v) == ocap(r) && !is_static(v)})]
         #[cold]
         fn inline_static_str(this: &mut Repr) {
             if let Some(s) = this.as_static_str() {
@@ -532,14 +625,31 @@ impl Repr {
 
         if self.is_static_str() {
             inline_static_str(self);
+            return self.owned_ptr();
         }
+        self.owned_ptr()
+    }
 
+    /// CENTRIFUGE: the tail of `as_mut_ptr`, because flux can't keep the index of `self` over the
+    /// join of the `if` there.
+    #[flux_rs::trusted(reason = "ASSUMED: flux can't keep the size of a pointer over the join of a heap and an inline arm")]
+    #[flux_rs::spec(fn(self: &strg Repr[@r]) -> *mut{p: crate::flux_specs::readable(p, rcap(r))} u8
+        requires !is_static(r) ensures self: Repr[r])]
+    #[inline(always)]
+    fn owned_ptr(&mut self) -> *mut u8 {
         if self.is_heap_allocated() {
             // SAFETY: We just checked the discriminant to make sure we're heap allocated.
             unsafe { self.as_mut_heap().ptr.as_ptr() }
         } else {
-            self as *mut Self as *mut u8
+            self.as_inline_ptr()
         }
+    }
+
+    #[flux_rs::trusted(reason = "ASSUMED: a pointer cast; `Repr` is `MAX_SIZE` bytes")]
+    #[flux_rs::spec(fn(&mut Repr) -> *mut{p: crate::flux_specs::readable(p, 24)} u8)]
+    #[inline(always)]
+    fn as_inline_ptr(&mut self) -> *mut u8 {
+        self as *mut Self as *mut u8
     }
 
     /// Sets the length of the string that our underlying buffer contains
@@ -547,6 +657,10 @@ impl Repr {
     /// # Safety
     /// * `len` bytes in the buffer must be valid UTF-8
     /// * If the underlying buffer is stored inline, `len` must be <= MAX_SIZE
+    #[flux_rs::trusted(reason = "ASSUMED: the `&mut` views can't update the index of `self`; for inline `len == 24` the caller wrote the last byte")]
+    #[flux_rs::spec(fn(self: &strg Repr[@r], len: usize) requires len <= rcap(r)
+        ensures self: Repr{v: rlen(v) == len && is_static(v) == is_static(r)
+                              && (!is_static(r) => rcap(v) == rcap(r))})]
     #[inline]
     pub(crate) unsafe fn set_len(&mut self, len: usize) {
         if let Some(s) = self.as_static_variant_mut() {
@@ -636,6 +750,8 @@ impl Repr {
     ///
     /// The last byte stores the discriminant that indicates whether the string is on the stack or
     /// on the heap. When the string is on the stack the last byte also stores the length
+    #[flux_rs::trusted(reason = "ASSUMED: the cast of a `LastByte` to its discriminant")]
+    #[flux_rs::spec(fn(&Repr[@r]) -> u8[r.last])]
     #[inline(always)]
     const fn last_byte(&self) -> u8 {
         cfg_if::cfg_if! {
@@ -656,16 +772,19 @@ impl Repr {
     /// define [`Repr`] as a `union` which implicitly transmuted between the two types, but that
     /// prevented us from defining a "niche" value to make `Option<CompactString>` the same size as
     /// just `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a transmute; every caller passes the length it just built `inline` with")]
+    #[flux_rs::spec(fn(InlineBuffer, len: usize) -> Repr{v: rlen(v) == len && v.last < 216} requires len <= 24)]
     #[inline(always)]
-    const fn from_inline(inline: InlineBuffer) -> Self {
+    const fn from_inline(inline: InlineBuffer, _len: usize) -> Self {
         // SAFETY: An `InlineBuffer` and `Repr` have the same size
         unsafe { core::mem::transmute(inline) }
     }
 
     /// `Ok(from_inline(inline))`, plus a hint to the compiler that the result is in fact `Ok`.
+    #[flux_rs::spec(fn(InlineBuffer, len: usize) -> Result<Repr{v: rlen(v) == len && v.last < 216}, ReserveError> requires len <= 24)]
     #[inline(always)]
-    fn from_inline_ok(inline: InlineBuffer) -> Result<Self, ReserveError> {
-        let repr = Self::from_inline(inline);
+    fn from_inline_ok(inline: InlineBuffer, len: usize) -> Result<Self, ReserveError> {
+        let repr = Self::from_inline(inline, len);
         // SAFETY: `InlineBuffer` always produces a valid inline last byte (`< HEAP_MASK`). The
         // compiler cannot see this through the transmute; without the hint it cannot fold the
         // niche-encoded `Err` arm at the call site. Kept here (not in `from_inline`) so callers
@@ -680,6 +799,8 @@ impl Repr {
     /// [`Repr`] as a `union` which implicitly transmuted between the two types, but that prevented
     /// us from defining a "niche" value to make `Option<CompactString>` the same size as just
     /// `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a transmute")]
+    #[flux_rs::spec(fn(HeapBuffer[@h]) -> Repr{v: is_heap(v) && v.hlen == h.len && hcap(v) == bits_cap(h.bits)})]
     #[inline(always)]
     const fn from_heap(heap: HeapBuffer) -> Self {
         // SAFETY: A `HeapBuffer` and `Repr` have the same size
@@ -692,6 +813,8 @@ impl Repr {
     /// [`Repr`] as a `union` which implicitly transmuted between the two types, but that prevented
     /// us from defining a "niche" value to make `Option<CompactString>` the same size as just
     /// `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a transmute")]
+    #[flux_rs::spec(fn(StaticStr[@n]) -> Repr{v: is_static(v) && v.hlen == n})]
     #[inline(always)]
     const fn from_static(heap: StaticStr) -> Self {
         // SAFETY: A `StaticStr` and `Repr` have the same size
@@ -707,9 +830,20 @@ impl Repr {
     /// Note: We used to define [`Repr`] as a `union` which implicitly transmuted between the two
     /// types, but that prevented us from defining a "niche" value to make `Option<CompactString>`
     /// the same size as just `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a transmute; the discriminant says this is a `HeapBuffer`")]
+    #[flux_rs::spec(fn(Repr[@r]) -> HeapBuffer{h: h.len == r.hlen && bits_cap(h.bits) == hcap(r)} requires is_heap(r))]
     #[inline(always)]
     const unsafe fn into_heap(self) -> HeapBuffer {
         core::mem::transmute(self)
+    }
+
+    /// CENTRIFUGE: [`HeapBuffer::realloc`], which `as_mut_heap` can't index.
+    #[flux_rs::trusted(reason = "ASSUMED: the `&mut` view can't update the index of `self`; `HeapBuffer::realloc` is checked")]
+    #[flux_rs::spec(fn(self: &strg Repr[@r], new_capacity: usize) -> Result<usize, ()>[#ok] requires is_heap(r)
+        ensures self: Repr{v: is_heap(v) && v.hlen == r.hlen && (ok => new_capacity <= hcap(v)) && (!ok => hcap(v) == hcap(r))})]
+    #[inline(always)]
+    unsafe fn heap_realloc(&mut self, new_capacity: usize) -> Result<usize, ()> {
+        self.as_mut_heap().realloc(new_capacity)
     }
 
     /// Reinterprets a `&mut Repr` as a `&mut HeapBuffer`
@@ -721,6 +855,8 @@ impl Repr {
     /// Note: We used to define [`Repr`] as a `union` which implicitly transmuted between the two
     /// types, but that prevented us from defining a "niche" value to make `Option<CompactString>`
     /// the same size as just `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a pointer cast; the discriminant says this is a `HeapBuffer`")]
+    #[flux_rs::spec(fn(&mut Repr[@r]) -> &mut HeapBuffer requires is_heap(r))]
     #[inline(always)]
     unsafe fn as_mut_heap(&mut self) -> &mut HeapBuffer {
         // SAFETY: A `HeapBuffer` and `Repr` have the same size
@@ -736,6 +872,8 @@ impl Repr {
     /// Note: We used to define [`Repr`] as a `union` which implicitly transmuted between the two
     /// types, but that prevented us from defining a "niche" value to make `Option<CompactString>`
     /// the same size as just `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a pointer cast; the discriminant says this is a `HeapBuffer`")]
+    #[flux_rs::spec(fn(&Repr[@r]) -> &HeapBuffer{h: h.len == r.hlen && bits_cap(h.bits) == hcap(r)} requires is_heap(r))]
     #[inline(always)]
     unsafe fn as_heap(&self) -> &HeapBuffer {
         // SAFETY: A `HeapBuffer` and `Repr` have the same size
@@ -766,6 +904,7 @@ impl Repr {
     /// Note: We used to define [`Repr`] as a `union` which implicitly transmuted between the two
     /// types, but that prevented us from defining a "niche" value to make `Option<CompactString>`
     /// the same size as just `CompactString`
+    #[flux_rs::trusted(reason = "ASSUMED: a pointer cast; the discriminant says this is an `InlineBuffer`")]
     #[inline(always)]
     unsafe fn as_mut_inline(&mut self) -> &mut InlineBuffer {
         // SAFETY: An `InlineBuffer` and `Repr` have the same size
@@ -837,6 +976,14 @@ impl Drop for Repr {
 impl Extend<char> for Repr {
     #[inline]
     fn extend<T: IntoIterator<Item = char>>(&mut self, iter: T) {
+        self.extend_chars(iter)
+    }
+}
+
+impl Repr {
+    /// CENTRIFUGE: the body of `Extend<char>`, whose signature gives `self` no index.
+    #[flux_rs::spec(fn(self: &strg Repr[@r], iter: T) ensures self: Repr)]
+    fn extend_chars<T: IntoIterator<Item = char>>(&mut self, iter: T) {
         let mut iter = iter.into_iter();
 
         let (lower_bound, _) = iter.size_hint();
@@ -875,7 +1022,11 @@ impl Extend<char> for Repr {
                 // SAFETY: `cur + n <= cap` leaves room for `n` bytes; `ptr` stays valid until the
                 // next `continue 'refetch`, which re-derives it; `encoded` cannot overlap `ptr`.
                 unsafe {
-                    ptr.add(cur).copy_from_nonoverlapping(encoded.as_ptr(), n);
+                    let dst = ptr.add(cur);
+                    // `buf` is a local.
+                    #[cfg(flux)]
+                    crate::flux_specs::disjoint(encoded.as_ptr(), dst, n);
+                    dst.copy_from_nonoverlapping(encoded.as_ptr(), n);
                 }
                 cur += n;
 
@@ -920,6 +1071,7 @@ impl Extend<String> for Repr {
 }
 
 /// Returns the supplied value, and ensures that the value is eagerly loaded into a register.
+#[flux_rs::spec(fn(value: usize) -> usize[value])]
 #[inline(always)]
 fn ensure_read(value: usize) -> usize {
     // SAFETY: This assembly instruction is a noop that only affects the instruction ordering.
@@ -927,7 +1079,7 @@ fn ensure_read(value: usize) -> usize {
     // TODO(parkmycar): Re-add loongarch and riscv once we have CI coverage for them.
     #[allow(unexpected_cfgs)]
     #[cfg(all(
-        not(any(kani, miri)),
+        not(any(kani, miri, flux)),
         any(
             target_arch = "x86",
             target_arch = "x86_64",
@@ -956,6 +1108,7 @@ fn ensure_read(value: usize) -> usize {
 ///
 /// # Safety
 /// `cond` must always hold; the compiler is free to assume it.
+#[flux_rs::spec(fn(cond: bool) requires cond)]
 #[inline(always)]
 const unsafe fn assume(cond: bool) {
     debug_assert!(cond);
@@ -1019,6 +1172,9 @@ pub(crate) unsafe fn copy_small(src: *const u8, dst: *mut u8, len: usize) {
 /// * `src` is valid for reads of `len` bytes; `dst` is valid for writes of `len` bytes.
 /// * `src` and `dst` do not overlap.
 ///
+#[flux_rs::spec(fn(src: *const[@s] u8, dst: *mut[@d] u8, len: usize)
+    requires crate::flux_specs::readable(s, len) && crate::flux_specs::readable(d, len)
+             && crate::flux_specs::apart(s, d, len))]
 #[inline]
 pub(crate) unsafe fn copy_medium(src: *const u8, dst: *mut u8, len: usize) {
     if len > 64 {

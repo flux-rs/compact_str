@@ -1,0 +1,5221 @@
+[
+  {
+    "uid": 0,
+    "path": "_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 1,
+    "path": "_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 2,
+    "path": "<ToCompactStringError as core::cmp::PartialEq>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2624,
+      "start_col": 30,
+      "end_line": 2624,
+      "end_col": 39
+    },
+    "deps": []
+  },
+  {
+    "uid": 3,
+    "path": "<ReserveError as core::cmp::PartialEq>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2610,
+      "start_col": 30,
+      "end_line": 2610,
+      "end_col": 39
+    },
+    "deps": []
+  },
+  {
+    "uid": 4,
+    "path": "<ToCompactStringError as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2624,
+      "start_col": 17,
+      "end_line": 2624,
+      "end_col": 22
+    },
+    "deps": []
+  },
+  {
+    "uid": 5,
+    "path": "<ToCompactStringError as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2624,
+      "start_col": 10,
+      "end_line": 2624,
+      "end_col": 15
+    },
+    "deps": []
+  },
+  {
+    "uid": 6,
+    "path": "<ReserveError as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2610,
+      "start_col": 17,
+      "end_line": 2610,
+      "end_col": 22
+    },
+    "deps": []
+  },
+  {
+    "uid": 7,
+    "path": "<ReserveError as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2610,
+      "start_col": 10,
+      "end_line": 2610,
+      "end_col": 15
+    },
+    "deps": []
+  },
+  {
+    "uid": 8,
+    "path": "<Utf16Error as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2510,
+      "start_col": 23,
+      "end_line": 2510,
+      "end_col": 28
+    },
+    "deps": []
+  },
+  {
+    "uid": 9,
+    "path": "<Utf16Error as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2510,
+      "start_col": 16,
+      "end_line": 2510,
+      "end_col": 21
+    },
+    "deps": []
+  },
+  {
+    "uid": 10,
+    "path": "repr::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 11,
+    "path": "repr::static_str::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 12,
+    "path": "repr::static_str::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_align.rs",
+      "start_line": 38,
+      "start_col": 25,
+      "end_line": 38,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 13,
+    "path": "repr::static_str::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 14,
+    "path": "<repr::static_str::StaticStr as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/static_str.rs",
+      "start_line": 9,
+      "start_col": 16,
+      "end_line": 9,
+      "end_col": 21
+    },
+    "deps": []
+  },
+  {
+    "uid": 15,
+    "path": "<ToCompactStringError as core::convert::From<ReserveError>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2644,
+      "start_col": 5,
+      "end_line": 2644,
+      "end_col": 41
+    },
+    "deps": []
+  },
+  {
+    "uid": 16,
+    "path": "repr::copy_medium",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 1023,
+      "start_col": 1,
+      "end_line": 1023,
+      "end_col": 75
+    },
+    "deps": []
+  },
+  {
+    "uid": 17,
+    "path": "repr::heap::do_alloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 406,
+      "start_col": 1,
+      "end_line": 406,
+      "end_col": 88
+    },
+    "deps": []
+  },
+  {
+    "uid": 18,
+    "path": "repr::heap::inline_capacity::layout",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 484,
+      "start_col": 5,
+      "end_line": 484,
+      "end_col": 59
+    },
+    "deps": []
+  },
+  {
+    "uid": 19,
+    "path": "repr::heap::heap_capacity::layout",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 447,
+      "start_col": 5,
+      "end_line": 447,
+      "end_col": 59
+    },
+    "deps": []
+  },
+  {
+    "uid": 20,
+    "path": "repr::capacity::Capacity::is_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 109,
+      "start_col": 5,
+      "end_line": 109,
+      "end_col": 40
+    },
+    "deps": []
+  },
+  {
+    "uid": 21,
+    "path": "repr::assume",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 960,
+      "start_col": 1,
+      "end_line": 960,
+      "end_col": 35
+    },
+    "deps": []
+  },
+  {
+    "uid": 22,
+    "path": "repr::Repr::last_byte",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 640,
+      "start_col": 5,
+      "end_line": 640,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 23,
+    "path": "repr::Repr::from_inline",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 660,
+      "start_col": 5,
+      "end_line": 660,
+      "end_col": 55
+    },
+    "deps": []
+  },
+  {
+    "uid": 24,
+    "path": "repr::inline::InlineBuffer::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/inline.rs",
+      "start_line": 22,
+      "start_col": 5,
+      "end_line": 22,
+      "end_col": 49
+    },
+    "deps": []
+  },
+  {
+    "uid": 25,
+    "path": "<i64 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 339,
+      "start_col": 5,
+      "end_line": 339,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 26,
+    "path": "<i64 as repr::num::NumChars>::num_chars::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 343,
+      "start_col": 24,
+      "end_line": 343,
+      "end_col": 29
+    },
+    "deps": []
+  },
+  {
+    "uid": 27,
+    "path": "<u64 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 330,
+      "start_col": 5,
+      "end_line": 330,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 28,
+    "path": "<u64 as repr::num::NumChars>::num_chars::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 333,
+      "start_col": 40,
+      "end_line": 333,
+      "end_col": 45
+    },
+    "deps": []
+  },
+  {
+    "uid": 29,
+    "path": "<i32 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 302,
+      "start_col": 5,
+      "end_line": 302,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 30,
+    "path": "<u32 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 284,
+      "start_col": 5,
+      "end_line": 284,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 31,
+    "path": "<i16 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 266,
+      "start_col": 5,
+      "end_line": 266,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 32,
+    "path": "<u16 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 253,
+      "start_col": 5,
+      "end_line": 253,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 33,
+    "path": "<i8 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 239,
+      "start_col": 5,
+      "end_line": 239,
+      "end_col": 35
+    },
+    "deps": []
+  },
+  {
+    "uid": 34,
+    "path": "<u8 as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 228,
+      "start_col": 5,
+      "end_line": 228,
+      "end_col": 35
+    },
+    "deps": []
+  },
+  {
+    "uid": 35,
+    "path": "repr::last_utf8_char::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 36,
+    "path": "<repr::last_utf8_char::LastByte as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/last_utf8_char.rs",
+      "start_line": 10,
+      "start_col": 23,
+      "end_line": 10,
+      "end_col": 28
+    },
+    "deps": []
+  },
+  {
+    "uid": 37,
+    "path": "<repr::last_utf8_char::LastByte as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/last_utf8_char.rs",
+      "start_line": 10,
+      "start_col": 16,
+      "end_line": 10,
+      "end_col": 21
+    },
+    "deps": []
+  },
+  {
+    "uid": 38,
+    "path": "repr::inline::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_align.rs",
+      "start_line": 38,
+      "start_col": 25,
+      "end_line": 38,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 39,
+    "path": "repr::inline::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 40,
+    "path": "repr::heap::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_align.rs",
+      "start_line": 38,
+      "start_col": 25,
+      "end_line": 38,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 41,
+    "path": "repr::heap::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 42,
+    "path": "repr::capacity::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_align.rs",
+      "start_line": 38,
+      "start_col": 25,
+      "end_line": 38,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 43,
+    "path": "repr::capacity::_::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/static_assertions-1.1.0/src/assert_eq_size.rs",
+      "start_line": 36,
+      "start_col": 25,
+      "end_line": 36,
+      "end_col": 27
+    },
+    "deps": []
+  },
+  {
+    "uid": 44,
+    "path": "<repr::capacity::Capacity as core::cmp::Eq>::assert_fields_are_eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 53,
+      "start_col": 34,
+      "end_line": 53,
+      "end_col": 36
+    },
+    "deps": []
+  },
+  {
+    "uid": 45,
+    "path": "<repr::capacity::Capacity as core::cmp::PartialEq>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 53,
+      "start_col": 23,
+      "end_line": 53,
+      "end_col": 32
+    },
+    "deps": []
+  },
+  {
+    "uid": 46,
+    "path": "<repr::capacity::Capacity as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 53,
+      "start_col": 16,
+      "end_line": 53,
+      "end_col": 21
+    },
+    "deps": []
+  },
+  {
+    "uid": 47,
+    "path": "unicode_data::decode_prefix_sum",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 48,
+      "start_col": 1,
+      "end_line": 48,
+      "end_col": 64
+    },
+    "deps": []
+  },
+  {
+    "uid": 48,
+    "path": "unicode_data::decode_length",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 53,
+      "start_col": 1,
+      "end_line": 53,
+      "end_col": 62
+    },
+    "deps": []
+  },
+  {
+    "uid": 49,
+    "path": "unicode_data::skip_search::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 18,
+      "start_col": 71,
+      "end_line": 18,
+      "end_col": 79
+    },
+    "deps": []
+  },
+  {
+    "uid": 50,
+    "path": "unicode_data::skip_search::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 18,
+      "start_col": 71,
+      "end_line": 18,
+      "end_col": 79
+    },
+    "deps": []
+  },
+  {
+    "uid": 51,
+    "path": "unwrap_with_msg_fail",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2689,
+      "start_col": 1,
+      "end_line": 2689,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 52,
+    "path": "<ToCompactStringError as core::error::Error>::source",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2659,
+      "start_col": 5,
+      "end_line": 2659,
+      "end_col": 67
+    },
+    "deps": []
+  },
+  {
+    "uid": 53,
+    "path": "<ToCompactStringError as core::convert::From<core::fmt::Error>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2651,
+      "start_col": 5,
+      "end_line": 2651,
+      "end_col": 39
+    },
+    "deps": []
+  },
+  {
+    "uid": 54,
+    "path": "<ReserveError as core::fmt::Display>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2614,
+      "start_col": 5,
+      "end_line": 2614,
+      "end_col": 61
+    },
+    "deps": []
+  },
+  {
+    "uid": 55,
+    "path": "<Drain<'_> as core::iter::DoubleEndedIterator>::next_back",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2602,
+      "start_col": 5,
+      "end_line": 2602,
+      "end_col": 44
+    },
+    "deps": []
+  },
+  {
+    "uid": 56,
+    "path": "<Drain<'_> as core::iter::Iterator>::last",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2595,
+      "start_col": 5,
+      "end_line": 2595,
+      "end_col": 38
+    },
+    "deps": []
+  },
+  {
+    "uid": 57,
+    "path": "<Drain<'_> as core::iter::Iterator>::size_hint",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2590,
+      "start_col": 5,
+      "end_line": 2590,
+      "end_col": 50
+    },
+    "deps": []
+  },
+  {
+    "uid": 58,
+    "path": "<Drain<'_> as core::iter::Iterator>::count",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2585,
+      "start_col": 5,
+      "end_line": 2585,
+      "end_col": 28
+    },
+    "deps": []
+  },
+  {
+    "uid": 59,
+    "path": "<Drain<'_> as core::iter::Iterator>::next",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2580,
+      "start_col": 5,
+      "end_line": 2580,
+      "end_col": 39
+    },
+    "deps": []
+  },
+  {
+    "uid": 60,
+    "path": "Drain::<'_>::as_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2562,
+      "start_col": 5,
+      "end_line": 2562,
+      "end_col": 33
+    },
+    "deps": []
+  },
+  {
+    "uid": 61,
+    "path": "Drain::<'_>::as_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2562,
+      "start_col": 5,
+      "end_line": 2562,
+      "end_col": 33
+    },
+    "deps": []
+  },
+  {
+    "uid": 62,
+    "path": "repr::inline::InlineBuffer::set_len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/inline.rs",
+      "start_line": 222,
+      "start_col": 5,
+      "end_line": 222,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 63,
+    "path": "repr::Repr::as_mut_inline",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 770,
+      "start_col": 5,
+      "end_line": 770,
+      "end_col": 60
+    },
+    "deps": []
+  },
+  {
+    "uid": 64,
+    "path": "repr::heap::HeapBuffer::set_len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 298,
+      "start_col": 5,
+      "end_line": 298,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 65,
+    "path": "repr::Repr::as_mut_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 725,
+      "start_col": 5,
+      "end_line": 725,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 66,
+    "path": "repr::static_str::StaticStr::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/static_str.rs",
+      "start_line": 23,
+      "start_col": 5,
+      "end_line": 23,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 67,
+    "path": "repr::static_str::StaticStr::get_text",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/static_str.rs",
+      "start_line": 36,
+      "start_col": 5,
+      "end_line": 36,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 68,
+    "path": "unwrap_with_msg_fail",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2689,
+      "start_col": 1,
+      "end_line": 2689,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 69,
+    "path": "repr::ensure_read",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 924,
+      "start_col": 1,
+      "end_line": 924,
+      "end_col": 38
+    },
+    "deps": []
+  },
+  {
+    "uid": 70,
+    "path": "<Utf16Error as core::fmt::Display>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2514,
+      "start_col": 5,
+      "end_line": 2514,
+      "end_col": 61
+    },
+    "deps": []
+  },
+  {
+    "uid": 71,
+    "path": "repr::Repr::from_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 684,
+      "start_col": 5,
+      "end_line": 684,
+      "end_col": 49
+    },
+    "deps": []
+  },
+  {
+    "uid": 72,
+    "path": "repr::heap::amortized_growth",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 19,
+      "start_col": 1,
+      "end_line": 19,
+      "end_col": 75
+    },
+    "deps": []
+  },
+  {
+    "uid": 73,
+    "path": "repr::capacity::Capacity::as_usize",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 102,
+      "start_col": 5,
+      "end_line": 102,
+      "end_col": 49
+    },
+    "deps": []
+  },
+  {
+    "uid": 74,
+    "path": "repr::heap::HeapBuffer::capacity::read_capacity_from_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 161,
+      "start_col": 9,
+      "end_line": 161,
+      "end_col": 63
+    },
+    "deps": []
+  },
+  {
+    "uid": 75,
+    "path": "repr::Repr::as_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 740,
+      "start_col": 5,
+      "end_line": 740,
+      "end_col": 44
+    },
+    "deps": []
+  },
+  {
+    "uid": 76,
+    "path": "repr::Repr::from_static",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 696,
+      "start_col": 5,
+      "end_line": 696,
+      "end_col": 50
+    },
+    "deps": []
+  },
+  {
+    "uid": 77,
+    "path": "repr::inline::InlineBuffer::new_const",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/inline.rs",
+      "start_line": 162,
+      "start_col": 5,
+      "end_line": 162,
+      "end_col": 54
+    },
+    "deps": []
+  },
+  {
+    "uid": 78,
+    "path": "<repr::Repr as core::iter::Extend<std::string::String>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 917,
+      "start_col": 5,
+      "end_line": 917,
+      "end_col": 66
+    },
+    "deps": []
+  },
+  {
+    "uid": 79,
+    "path": "<CompactString as core::iter::Extend<std::borrow::Cow<'a, str>>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2421,
+      "start_col": 5,
+      "end_line": 2421,
+      "end_col": 72
+    },
+    "deps": []
+  },
+  {
+    "uid": 80,
+    "path": "<repr::Repr as core::iter::Extend<std::boxed::Box<str>>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 905,
+      "start_col": 5,
+      "end_line": 905,
+      "end_col": 68
+    },
+    "deps": []
+  },
+  {
+    "uid": 81,
+    "path": "<repr::Repr as core::iter::Extend<&'a str>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 899,
+      "start_col": 5,
+      "end_line": 899,
+      "end_col": 67
+    },
+    "deps": []
+  },
+  {
+    "uid": 82,
+    "path": "repr::Repr::into_string::into_string_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 217,
+      "start_col": 9,
+      "end_line": 217,
+      "end_col": 56
+    },
+    "deps": []
+  },
+  {
+    "uid": 83,
+    "path": "repr::Repr::into_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 711,
+      "start_col": 5,
+      "end_line": 711,
+      "end_col": 50
+    },
+    "deps": []
+  },
+  {
+    "uid": 84,
+    "path": "<CompactString as core::iter::FromIterator<CompactString>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2370,
+      "start_col": 5,
+      "end_line": 2370,
+      "end_col": 73
+    },
+    "deps": []
+  },
+  {
+    "uid": 85,
+    "path": "<CompactString as core::iter::FromIterator<std::string::String>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2363,
+      "start_col": 5,
+      "end_line": 2363,
+      "end_col": 66
+    },
+    "deps": []
+  },
+  {
+    "uid": 86,
+    "path": "<CompactString as core::iter::FromIterator<std::borrow::Cow<'a, str>>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2356,
+      "start_col": 5,
+      "end_line": 2356,
+      "end_col": 72
+    },
+    "deps": []
+  },
+  {
+    "uid": 87,
+    "path": "<CompactString as core::iter::FromIterator<std::boxed::Box<str>>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2349,
+      "start_col": 5,
+      "end_line": 2349,
+      "end_col": 68
+    },
+    "deps": []
+  },
+  {
+    "uid": 88,
+    "path": "<CompactString as core::iter::FromIterator<&'a str>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2342,
+      "start_col": 5,
+      "end_line": 2342,
+      "end_col": 67
+    },
+    "deps": []
+  },
+  {
+    "uid": 89,
+    "path": "<CompactString as core::iter::FromIterator<&'a char>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2335,
+      "start_col": 5,
+      "end_line": 2335,
+      "end_col": 68
+    },
+    "deps": []
+  },
+  {
+    "uid": 90,
+    "path": "<CompactString as core::iter::FromIterator<char>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2328,
+      "start_col": 5,
+      "end_line": 2328,
+      "end_col": 64
+    },
+    "deps": []
+  },
+  {
+    "uid": 91,
+    "path": "<impl core::convert::From<CompactString> for std::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2231,
+      "start_col": 5,
+      "end_line": 2231,
+      "end_col": 42
+    },
+    "deps": []
+  },
+  {
+    "uid": 92,
+    "path": "<CompactString as core::convert::From<std::borrow::Cow<'a, str>>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2172,
+      "start_col": 5,
+      "end_line": 2172,
+      "end_col": 39
+    },
+    "deps": []
+  },
+  {
+    "uid": 93,
+    "path": "CompactString::from_utf16x::{closure#1}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1429,
+      "start_col": 43,
+      "end_line": 1429,
+      "end_col": 46
+    },
+    "deps": []
+  },
+  {
+    "uid": 94,
+    "path": "CompactString::from_utf16x::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1421,
+      "start_col": 43,
+      "end_line": 1421,
+      "end_col": 46
+    },
+    "deps": []
+  },
+  {
+    "uid": 95,
+    "path": "CompactString::from_utf16x::{closure#1}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1429,
+      "start_col": 43,
+      "end_line": 1429,
+      "end_col": 46
+    },
+    "deps": []
+  },
+  {
+    "uid": 96,
+    "path": "CompactString::from_utf16x::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1421,
+      "start_col": 43,
+      "end_line": 1421,
+      "end_col": 46
+    },
+    "deps": []
+  },
+  {
+    "uid": 97,
+    "path": "CompactString::from_utf16x::{closure#1}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1429,
+      "start_col": 43,
+      "end_line": 1429,
+      "end_col": 46
+    },
+    "deps": []
+  },
+  {
+    "uid": 98,
+    "path": "CompactString::from_utf16x::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1421,
+      "start_col": 43,
+      "end_line": 1421,
+      "end_col": 46
+    },
+    "deps": []
+  },
+  {
+    "uid": 99,
+    "path": "CompactString::ensure_range::illegal_range",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 841,
+      "start_col": 9,
+      "end_line": 841,
+      "end_col": 32
+    },
+    "deps": []
+  },
+  {
+    "uid": 100,
+    "path": "<bool as repr::traits::IntoRepr>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/traits.rs",
+      "start_line": 34,
+      "start_col": 5,
+      "end_line": 34,
+      "end_col": 61
+    },
+    "deps": []
+  },
+  {
+    "uid": 101,
+    "path": "<repr::Repr as core::iter::Extend<std::borrow::Cow<'a, str>>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 911,
+      "start_col": 5,
+      "end_line": 911,
+      "end_col": 72
+    },
+    "deps": []
+  },
+  {
+    "uid": 102,
+    "path": "<i64 as repr::num::NumChars>::num_chars::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 343,
+      "start_col": 24,
+      "end_line": 343,
+      "end_col": 29
+    },
+    "deps": []
+  },
+  {
+    "uid": 103,
+    "path": "<u64 as repr::num::NumChars>::num_chars::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 333,
+      "start_col": 40,
+      "end_line": 333,
+      "end_col": 45
+    },
+    "deps": []
+  },
+  {
+    "uid": 104,
+    "path": "repr::iter::<impl core::iter::FromIterator<&'a char> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 29,
+      "start_col": 5,
+      "end_line": 29,
+      "end_col": 68
+    },
+    "deps": []
+  },
+  {
+    "uid": 105,
+    "path": "<repr::capacity::Capacity as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 61,
+      "start_col": 5,
+      "end_line": 61,
+      "end_col": 61
+    },
+    "deps": []
+  },
+  {
+    "uid": 106,
+    "path": "unicode_data::skip_search::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 18,
+      "start_col": 71,
+      "end_line": 18,
+      "end_col": 79
+    },
+    "deps": []
+  },
+  {
+    "uid": 107,
+    "path": "repr::heap::inline_capacity::alloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 465,
+      "start_col": 5,
+      "end_line": 465,
+      "end_col": 90
+    },
+    "deps": [
+      17,
+      18
+    ]
+  },
+  {
+    "uid": 108,
+    "path": "repr::heap::inline_capacity::dealloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 473,
+      "start_col": 5,
+      "end_line": 473,
+      "end_col": 73
+    },
+    "deps": [
+      18
+    ]
+  },
+  {
+    "uid": 109,
+    "path": "repr::heap::heap_capacity::alloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 426,
+      "start_col": 5,
+      "end_line": 426,
+      "end_col": 90
+    },
+    "deps": [
+      17,
+      19
+    ]
+  },
+  {
+    "uid": 110,
+    "path": "repr::heap::heap_capacity::dealloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 435,
+      "start_col": 5,
+      "end_line": 435,
+      "end_col": 73
+    },
+    "deps": [
+      19
+    ]
+  },
+  {
+    "uid": 111,
+    "path": "repr::capacity::Capacity::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/capacity.rs",
+      "start_line": 68,
+      "start_col": 5,
+      "end_line": 68,
+      "end_col": 53
+    },
+    "deps": [
+      21
+    ]
+  },
+  {
+    "uid": 112,
+    "path": "repr::Repr::is_heap_allocated",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 487,
+      "start_col": 5,
+      "end_line": 487,
+      "end_col": 51
+    },
+    "deps": [
+      22
+    ]
+  },
+  {
+    "uid": 113,
+    "path": "repr::Repr::is_static_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 493,
+      "start_col": 5,
+      "end_line": 493,
+      "end_col": 42
+    },
+    "deps": [
+      22
+    ]
+  },
+  {
+    "uid": 114,
+    "path": "repr::Repr::as_slice",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 396,
+      "start_col": 5,
+      "end_line": 396,
+      "end_col": 43
+    },
+    "deps": [
+      22
+    ]
+  },
+  {
+    "uid": 115,
+    "path": "repr::Repr::from_inline_ok",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 667,
+      "start_col": 5,
+      "end_line": 667,
+      "end_col": 74
+    },
+    "deps": [
+      21,
+      22,
+      23
+    ]
+  },
+  {
+    "uid": 116,
+    "path": "<isize as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 363,
+      "start_col": 5,
+      "end_line": 363,
+      "end_col": 38
+    },
+    "deps": [
+      25
+    ]
+  },
+  {
+    "uid": 117,
+    "path": "<usize as repr::num::NumChars>::num_chars",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 349,
+      "start_col": 5,
+      "end_line": 349,
+      "end_col": 38
+    },
+    "deps": [
+      27
+    ]
+  },
+  {
+    "uid": 118,
+    "path": "unicode_data::skip_search::{closure#1}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 31,
+      "start_col": 14,
+      "end_line": 31,
+      "end_col": 20
+    },
+    "deps": [
+      47
+    ]
+  },
+  {
+    "uid": 119,
+    "path": "unicode_data::skip_search::{closure#1}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 31,
+      "start_col": 14,
+      "end_line": 31,
+      "end_col": 20
+    },
+    "deps": [
+      47
+    ]
+  },
+  {
+    "uid": 120,
+    "path": "unicode_data::skip_search::{closure#1}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 31,
+      "start_col": 14,
+      "end_line": 31,
+      "end_col": 20
+    },
+    "deps": [
+      47
+    ]
+  },
+  {
+    "uid": 121,
+    "path": "unicode_data::skip_search",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 5,
+      "start_col": 1,
+      "end_line": 9,
+      "end_col": 10
+    },
+    "deps": [
+      48
+    ]
+  },
+  {
+    "uid": 122,
+    "path": "unicode_data::skip_search",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 5,
+      "start_col": 1,
+      "end_line": 9,
+      "end_col": 10
+    },
+    "deps": [
+      48
+    ]
+  },
+  {
+    "uid": 123,
+    "path": "unicode_data::skip_search",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 5,
+      "start_col": 1,
+      "end_line": 9,
+      "end_col": 10
+    },
+    "deps": [
+      48
+    ]
+  },
+  {
+    "uid": 124,
+    "path": "<core::result::Result<T, E> as UnwrapWithMsg>::unwrap_with_msg",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2678,
+      "start_col": 5,
+      "end_line": 2678,
+      "end_col": 34
+    },
+    "deps": [
+      51
+    ]
+  },
+  {
+    "uid": 125,
+    "path": "<ToCompactStringError as core::fmt::Display>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2634,
+      "start_col": 5,
+      "end_line": 2634,
+      "end_col": 61
+    },
+    "deps": [
+      54
+    ]
+  },
+  {
+    "uid": 126,
+    "path": "<Drain<'_> as core::ops::Deref>::deref",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2571,
+      "start_col": 5,
+      "end_line": 2571,
+      "end_col": 37
+    },
+    "deps": [
+      60
+    ]
+  },
+  {
+    "uid": 127,
+    "path": "<Drain<'_> as core::fmt::Display>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2544,
+      "start_col": 5,
+      "end_line": 2544,
+      "end_col": 61
+    },
+    "deps": [
+      60
+    ]
+  },
+  {
+    "uid": 128,
+    "path": "<Drain<'_> as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2537,
+      "start_col": 5,
+      "end_line": 2537,
+      "end_col": 61
+    },
+    "deps": [
+      60
+    ]
+  },
+  {
+    "uid": 129,
+    "path": "repr::static_str::StaticStr::set_len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/static_str.rs",
+      "start_line": 44,
+      "start_col": 5,
+      "end_line": 44,
+      "end_col": 56
+    },
+    "deps": [
+      66,
+      67
+    ]
+  },
+  {
+    "uid": 130,
+    "path": "<core::result::Result<T, E> as UnwrapWithMsg>::unwrap_with_msg",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2678,
+      "start_col": 5,
+      "end_line": 2678,
+      "end_col": 34
+    },
+    "deps": [
+      68
+    ]
+  },
+  {
+    "uid": 131,
+    "path": "<core::result::Result<T, E> as UnwrapWithMsg>::unwrap_with_msg",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2678,
+      "start_col": 5,
+      "end_line": 2678,
+      "end_col": 34
+    },
+    "deps": [
+      68
+    ]
+  },
+  {
+    "uid": 132,
+    "path": "<core::result::Result<T, E> as UnwrapWithMsg>::unwrap_with_msg",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2678,
+      "start_col": 5,
+      "end_line": 2678,
+      "end_col": 34
+    },
+    "deps": [
+      68
+    ]
+  },
+  {
+    "uid": 133,
+    "path": "<core::result::Result<T, E> as UnwrapWithMsg>::unwrap_with_msg",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2678,
+      "start_col": 5,
+      "end_line": 2678,
+      "end_col": 34
+    },
+    "deps": [
+      68
+    ]
+  },
+  {
+    "uid": 134,
+    "path": "<core::result::Result<T, E> as UnwrapWithMsg>::unwrap_with_msg",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2678,
+      "start_col": 5,
+      "end_line": 2678,
+      "end_col": 34
+    },
+    "deps": [
+      68
+    ]
+  },
+  {
+    "uid": 135,
+    "path": "repr::Repr::len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 427,
+      "start_col": 5,
+      "end_line": 427,
+      "end_col": 38
+    },
+    "deps": [
+      22,
+      69
+    ]
+  },
+  {
+    "uid": 136,
+    "path": "repr::Repr::is_empty",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 457,
+      "start_col": 5,
+      "end_line": 457,
+      "end_col": 42
+    },
+    "deps": [
+      22,
+      69
+    ]
+  },
+  {
+    "uid": 137,
+    "path": "repr::heap::HeapBuffer::capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 159,
+      "start_col": 5,
+      "end_line": 159,
+      "end_col": 43
+    },
+    "deps": [
+      20,
+      73,
+      74
+    ]
+  },
+  {
+    "uid": 138,
+    "path": "repr::Repr::const_new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 115,
+      "start_col": 5,
+      "end_line": 115,
+      "end_col": 62
+    },
+    "deps": [
+      23,
+      66,
+      76,
+      77
+    ]
+  },
+  {
+    "uid": 139,
+    "path": "repr::inline::InlineBuffer::empty",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/inline.rs",
+      "start_line": 188,
+      "start_col": 5,
+      "end_line": 188,
+      "end_col": 40
+    },
+    "deps": [
+      77
+    ]
+  },
+  {
+    "uid": 140,
+    "path": "<CompactString as core::iter::Extend<std::string::String>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2427,
+      "start_col": 5,
+      "end_line": 2427,
+      "end_col": 66
+    },
+    "deps": [
+      78
+    ]
+  },
+  {
+    "uid": 141,
+    "path": "<CompactString as core::iter::Extend<std::boxed::Box<str>>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2415,
+      "start_col": 5,
+      "end_line": 2415,
+      "end_col": 68
+    },
+    "deps": [
+      80
+    ]
+  },
+  {
+    "uid": 142,
+    "path": "<CompactString as core::iter::Extend<&'a str>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2409,
+      "start_col": 5,
+      "end_line": 2409,
+      "end_col": 67
+    },
+    "deps": [
+      81
+    ]
+  },
+  {
+    "uid": 143,
+    "path": "<impl core::convert::From<CompactString> for std::boxed::Box<(dyn core::error::Error + 'static)>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2260,
+      "start_col": 5,
+      "end_line": 2260,
+      "end_col": 42
+    },
+    "deps": [
+      91
+    ]
+  },
+  {
+    "uid": 144,
+    "path": "repr::heap::allocate_ptr::allocate_with_capacity_on_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 348,
+      "start_col": 5,
+      "end_line": 348,
+      "end_col": 97
+    },
+    "deps": [
+      109
+    ]
+  },
+  {
+    "uid": 145,
+    "path": "repr::heap::deallocate_ptr::deallocate_with_capacity_on_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 379,
+      "start_col": 5,
+      "end_line": 379,
+      "end_col": 63
+    },
+    "deps": [
+      110
+    ]
+  },
+  {
+    "uid": 146,
+    "path": "CompactString::is_heap_allocated",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 830,
+      "start_col": 5,
+      "end_line": 830,
+      "end_col": 44
+    },
+    "deps": [
+      112
+    ]
+  },
+  {
+    "uid": 147,
+    "path": "repr::Repr::as_static_variant_mut",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 510,
+      "start_col": 5,
+      "end_line": 510,
+      "end_col": 66
+    },
+    "deps": [
+      113
+    ]
+  },
+  {
+    "uid": 148,
+    "path": "repr::Repr::as_static_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 499,
+      "start_col": 5,
+      "end_line": 499,
+      "end_col": 69
+    },
+    "deps": [
+      67,
+      113
+    ]
+  },
+  {
+    "uid": 149,
+    "path": "repr::Repr::as_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 420,
+      "start_col": 5,
+      "end_line": 420,
+      "end_col": 40
+    },
+    "deps": [
+      114
+    ]
+  },
+  {
+    "uid": 150,
+    "path": "CompactString::as_bytes",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 645,
+      "start_col": 5,
+      "end_line": 645,
+      "end_col": 36
+    },
+    "deps": [
+      114
+    ]
+  },
+  {
+    "uid": 151,
+    "path": "CompactString::as_ptr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1031,
+      "start_col": 5,
+      "end_line": 1031,
+      "end_col": 38
+    },
+    "deps": [
+      114
+    ]
+  },
+  {
+    "uid": 152,
+    "path": "unicode_data::cased::lookup",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 132,
+      "start_col": 5,
+      "end_line": 132,
+      "end_col": 42
+    },
+    "deps": [
+      121
+    ]
+  },
+  {
+    "uid": 153,
+    "path": "unicode_data::case_ignorable::lookup",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/unicode_data.rs",
+      "start_line": 101,
+      "start_col": 5,
+      "end_line": 101,
+      "end_col": 42
+    },
+    "deps": [
+      122
+    ]
+  },
+  {
+    "uid": 154,
+    "path": "CompactString::len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 474,
+      "start_col": 5,
+      "end_line": 474,
+      "end_col": 31
+    },
+    "deps": [
+      135
+    ]
+  },
+  {
+    "uid": 155,
+    "path": "CompactString::is_empty",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 491,
+      "start_col": 5,
+      "end_line": 491,
+      "end_col": 35
+    },
+    "deps": [
+      136
+    ]
+  },
+  {
+    "uid": 156,
+    "path": "repr::heap::HeapBuffer::realloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 181,
+      "start_col": 5,
+      "end_line": 181,
+      "end_col": 79
+    },
+    "deps": [
+      18,
+      19,
+      20,
+      111,
+      73,
+      137
+    ]
+  },
+  {
+    "uid": 157,
+    "path": "repr::Repr::capacity::heap_capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 471,
+      "start_col": 9,
+      "end_line": 471,
+      "end_col": 47
+    },
+    "deps": [
+      137,
+      75
+    ]
+  },
+  {
+    "uid": 158,
+    "path": "CompactString::const_new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 224,
+      "start_col": 5,
+      "end_line": 224,
+      "end_col": 55
+    },
+    "deps": [
+      138
+    ]
+  },
+  {
+    "uid": 159,
+    "path": "repr::heap::allocate_ptr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 338,
+      "start_col": 1,
+      "end_line": 338,
+      "end_col": 98
+    },
+    "deps": [
+      107,
+      144,
+      20,
+      111
+    ]
+  },
+  {
+    "uid": 160,
+    "path": "repr::heap::deallocate_ptr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 377,
+      "start_col": 1,
+      "end_line": 377,
+      "end_col": 67
+    },
+    "deps": [
+      20,
+      73,
+      108,
+      145
+    ]
+  },
+  {
+    "uid": 161,
+    "path": "repr::Repr::set_len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 551,
+      "start_col": 5,
+      "end_line": 551,
+      "end_col": 56
+    },
+    "deps": [
+      62,
+      63,
+      64,
+      65,
+      112,
+      129,
+      147
+    ]
+  },
+  {
+    "uid": 162,
+    "path": "CompactString::as_static_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 245,
+      "start_col": 5,
+      "end_line": 245,
+      "end_col": 62
+    },
+    "deps": [
+      148
+    ]
+  },
+  {
+    "uid": 163,
+    "path": "CompactString::as_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 570,
+      "start_col": 5,
+      "end_line": 570,
+      "end_col": 33
+    },
+    "deps": [
+      149
+    ]
+  },
+  {
+    "uid": 164,
+    "path": "repr::Repr::into_string",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 215,
+      "start_col": 5,
+      "end_line": 215,
+      "end_col": 46
+    },
+    "deps": [
+      20,
+      112,
+      149,
+      73,
+      82,
+      83
+    ]
+  },
+  {
+    "uid": 165,
+    "path": "<CompactString as core::convert::AsRef<[u8]>>::as_ref",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2029,
+      "start_col": 5,
+      "end_line": 2029,
+      "end_col": 30
+    },
+    "deps": [
+      150
+    ]
+  },
+  {
+    "uid": 166,
+    "path": "CompactString::from_str_to_lowercase::case_ignorable_then_cased",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1826,
+      "start_col": 9,
+      "end_line": 1826,
+      "end_col": 84
+    },
+    "deps": [
+      152
+    ]
+  },
+  {
+    "uid": 167,
+    "path": "CompactString::from_str_to_lowercase::case_ignorable_then_cased",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1826,
+      "start_col": 9,
+      "end_line": 1826,
+      "end_col": 84
+    },
+    "deps": [
+      152
+    ]
+  },
+  {
+    "uid": 168,
+    "path": "CompactString::from_str_to_lowercase::case_ignorable_then_cased",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1826,
+      "start_col": 9,
+      "end_line": 1826,
+      "end_col": 84
+    },
+    "deps": [
+      152
+    ]
+  },
+  {
+    "uid": 169,
+    "path": "CompactString::from_str_to_lowercase::case_ignorable_then_cased::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1829,
+      "start_col": 29,
+      "end_line": 1829,
+      "end_col": 33
+    },
+    "deps": [
+      153
+    ]
+  },
+  {
+    "uid": 170,
+    "path": "CompactString::from_str_to_lowercase::case_ignorable_then_cased::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1829,
+      "start_col": 29,
+      "end_line": 1829,
+      "end_col": 33
+    },
+    "deps": [
+      153
+    ]
+  },
+  {
+    "uid": 171,
+    "path": "CompactString::from_str_to_lowercase::case_ignorable_then_cased::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1829,
+      "start_col": 29,
+      "end_line": 1829,
+      "end_col": 33
+    },
+    "deps": [
+      153
+    ]
+  },
+  {
+    "uid": 172,
+    "path": "repr::Repr::capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 469,
+      "start_col": 5,
+      "end_line": 469,
+      "end_col": 43
+    },
+    "deps": [
+      112,
+      148,
+      157
+    ]
+  },
+  {
+    "uid": 173,
+    "path": "<CompactString as core::default::Default>::default",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1991,
+      "start_col": 5,
+      "end_line": 1991,
+      "end_col": 25
+    },
+    "deps": [
+      158
+    ]
+  },
+  {
+    "uid": 174,
+    "path": "<C as traits::CompactStringExt>::concat_compact",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/traits.rs",
+      "start_line": 188,
+      "start_col": 5,
+      "end_line": 188,
+      "end_col": 45
+    },
+    "deps": [
+      158
+    ]
+  },
+  {
+    "uid": 175,
+    "path": "repr::heap::HeapBuffer::alloc_copy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 50,
+      "start_col": 5,
+      "end_line": 50,
+      "end_col": 95
+    },
+    "deps": [
+      16,
+      159
+    ]
+  },
+  {
+    "uid": 176,
+    "path": "repr::heap::HeapBuffer::alloc_copy_extra",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 139,
+      "start_col": 5,
+      "end_line": 142,
+      "end_col": 60
+    },
+    "deps": [
+      16,
+      159,
+      72
+    ]
+  },
+  {
+    "uid": 177,
+    "path": "repr::heap::HeapBuffer::alloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 111,
+      "start_col": 5,
+      "end_line": 111,
+      "end_col": 84
+    },
+    "deps": [
+      159
+    ]
+  },
+  {
+    "uid": 178,
+    "path": "<repr::Repr as core::ops::Drop>::drop::outlined_drop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 831,
+      "start_col": 9,
+      "end_line": 831,
+      "end_col": 63
+    },
+    "deps": [
+      160
+    ]
+  },
+  {
+    "uid": 179,
+    "path": "repr::heap::HeapBuffer::dealloc",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 304,
+      "start_col": 5,
+      "end_line": 304,
+      "end_col": 37
+    },
+    "deps": [
+      160
+    ]
+  },
+  {
+    "uid": 180,
+    "path": "CompactString::set_len",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 807,
+      "start_col": 5,
+      "end_line": 807,
+      "end_col": 53
+    },
+    "deps": [
+      161
+    ]
+  },
+  {
+    "uid": 181,
+    "path": "repr::Repr::pop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 385,
+      "start_col": 5,
+      "end_line": 385,
+      "end_col": 49
+    },
+    "deps": [
+      161,
+      135,
+      149
+    ]
+  },
+  {
+    "uid": 182,
+    "path": "<CompactString as core::ops::Deref>::deref",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2000,
+      "start_col": 5,
+      "end_line": 2000,
+      "end_col": 28
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 183,
+    "path": "<CompactString as core::fmt::Display>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2322,
+      "start_col": 5,
+      "end_line": 2322,
+      "end_col": 61
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 184,
+    "path": "<CompactString as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2316,
+      "start_col": 5,
+      "end_line": 2316,
+      "end_col": 61
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 185,
+    "path": "<CompactString as core::convert::AsRef<std::path::Path>>::as_ref",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2293,
+      "start_col": 5,
+      "end_line": 2293,
+      "end_col": 41
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 186,
+    "path": "<impl core::convert::From<CompactString> for std::rc::Rc<str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2224,
+      "start_col": 5,
+      "end_line": 2224,
+      "end_col": 42
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 187,
+    "path": "<impl core::convert::From<CompactString> for std::sync::Arc<str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2218,
+      "start_col": 5,
+      "end_line": 2218,
+      "end_col": 42
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 188,
+    "path": "<CompactString as core::hash::Hash>::hash",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2141,
+      "start_col": 5,
+      "end_line": 2141,
+      "end_col": 45
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 189,
+    "path": "<CompactString as core::cmp::Ord>::cmp",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2129,
+      "start_col": 5,
+      "end_line": 2129,
+      "end_col": 44
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 190,
+    "path": "<&CompactString as core::cmp::PartialEq<std::borrow::Cow<'_, str>>>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2123,
+      "start_col": 5,
+      "end_line": 2123,
+      "end_col": 47
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 191,
+    "path": "<&CompactString as core::cmp::PartialEq<std::string::String>>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2117,
+      "start_col": 5,
+      "end_line": 2117,
+      "end_col": 41
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 192,
+    "path": "<impl core::cmp::PartialEq<CompactString> for &std::borrow::Cow<'_, str>>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2111,
+      "start_col": 5,
+      "end_line": 2111,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 193,
+    "path": "<impl core::cmp::PartialEq<CompactString> for std::borrow::Cow<'_, str>>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2105,
+      "start_col": 5,
+      "end_line": 2105,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 194,
+    "path": "<impl core::cmp::PartialEq<CompactString> for &&str>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2099,
+      "start_col": 5,
+      "end_line": 2099,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 195,
+    "path": "<impl core::cmp::PartialEq<CompactString> for &str>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2093,
+      "start_col": 5,
+      "end_line": 2093,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 196,
+    "path": "<impl core::cmp::PartialEq<&CompactString> for str>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2087,
+      "start_col": 5,
+      "end_line": 2087,
+      "end_col": 49
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 197,
+    "path": "<impl core::cmp::PartialEq<CompactString> for str>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2081,
+      "start_col": 5,
+      "end_line": 2081,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 198,
+    "path": "<impl core::cmp::PartialEq<CompactString> for &std::string::String>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2075,
+      "start_col": 5,
+      "end_line": 2075,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 199,
+    "path": "<impl core::cmp::PartialEq<&CompactString> for std::string::String>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2069,
+      "start_col": 5,
+      "end_line": 2069,
+      "end_col": 49
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 200,
+    "path": "<impl core::cmp::PartialEq<CompactString> for std::string::String>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2063,
+      "start_col": 5,
+      "end_line": 2063,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 201,
+    "path": "<&CompactString as core::cmp::PartialEq<CompactString>>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2057,
+      "start_col": 5,
+      "end_line": 2057,
+      "end_col": 48
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 202,
+    "path": "<CompactString as core::cmp::PartialEq<T>>::eq",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2051,
+      "start_col": 5,
+      "end_line": 2051,
+      "end_col": 36
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 203,
+    "path": "<CompactString as core::borrow::Borrow<str>>::borrow",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2036,
+      "start_col": 5,
+      "end_line": 2036,
+      "end_col": 29
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 204,
+    "path": "<CompactString as core::convert::AsRef<std::ffi::OsStr>>::as_ref",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2022,
+      "start_col": 5,
+      "end_line": 2022,
+      "end_col": 31
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 205,
+    "path": "<CompactString as core::convert::AsRef<str>>::as_ref",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2014,
+      "start_col": 5,
+      "end_line": 2014,
+      "end_col": 29
+    },
+    "deps": [
+      163
+    ]
+  },
+  {
+    "uid": 206,
+    "path": "CompactString::ensure_range",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 838,
+      "start_col": 5,
+      "end_line": 838,
+      "end_col": 77
+    },
+    "deps": [
+      154,
+      163,
+      99
+    ]
+  },
+  {
+    "uid": 207,
+    "path": "CompactString::into_string",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1573,
+      "start_col": 5,
+      "end_line": 1573,
+      "end_col": 39
+    },
+    "deps": [
+      164
+    ]
+  },
+  {
+    "uid": 208,
+    "path": "CompactString::capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 517,
+      "start_col": 5,
+      "end_line": 517,
+      "end_col": 36
+    },
+    "deps": [
+      172
+    ]
+  },
+  {
+    "uid": 209,
+    "path": "repr::heap::HeapBuffer::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 70,
+      "start_col": 5,
+      "end_line": 70,
+      "end_col": 64
+    },
+    "deps": [
+      175
+    ]
+  },
+  {
+    "uid": 210,
+    "path": "repr::heap::HeapBuffer::alloc_copy_panic",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 86,
+      "start_col": 5,
+      "end_line": 86,
+      "end_col": 61
+    },
+    "deps": [
+      175,
+      132
+    ]
+  },
+  {
+    "uid": 211,
+    "path": "repr::Repr::from_string",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 183,
+      "start_col": 5,
+      "end_line": 183,
+      "end_col": 92
+    },
+    "deps": [
+      175,
+      20,
+      111,
+      115,
+      24,
+      71
+    ]
+  },
+  {
+    "uid": 212,
+    "path": "repr::heap::HeapBuffer::with_additional",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 125,
+      "start_col": 5,
+      "end_line": 125,
+      "end_col": 95
+    },
+    "deps": [
+      176
+    ]
+  },
+  {
+    "uid": 213,
+    "path": "repr::heap::HeapBuffer::with_capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 101,
+      "start_col": 5,
+      "end_line": 101,
+      "end_col": 79
+    },
+    "deps": [
+      177
+    ]
+  },
+  {
+    "uid": 214,
+    "path": "<repr::Repr as core::ops::Drop>::drop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 818,
+      "start_col": 5,
+      "end_line": 818,
+      "end_col": 23
+    },
+    "deps": [
+      112,
+      75,
+      178
+    ]
+  },
+  {
+    "uid": 215,
+    "path": "<repr::heap::HeapBuffer as core::ops::Drop>::drop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 327,
+      "start_col": 5,
+      "end_line": 327,
+      "end_col": 23
+    },
+    "deps": [
+      179
+    ]
+  },
+  {
+    "uid": 216,
+    "path": "<CompactString::retain::SetLenOnDrop<'_> as core::ops::Drop>::drop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1309,
+      "start_col": 13,
+      "end_line": 1309,
+      "end_col": 31
+    },
+    "deps": [
+      180
+    ]
+  },
+  {
+    "uid": 217,
+    "path": "CompactString::clear",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1110,
+      "start_col": 5,
+      "end_line": 1110,
+      "end_col": 28
+    },
+    "deps": [
+      180
+    ]
+  },
+  {
+    "uid": 218,
+    "path": "CompactString::truncate",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1016,
+      "start_col": 5,
+      "end_line": 1016,
+      "end_col": 47
+    },
+    "deps": [
+      180,
+      163
+    ]
+  },
+  {
+    "uid": 219,
+    "path": "CompactString::pop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 711,
+      "start_col": 5,
+      "end_line": 711,
+      "end_col": 42
+    },
+    "deps": [
+      181
+    ]
+  },
+  {
+    "uid": 220,
+    "path": "<impl core::iter::Extend<CompactString> for std::string::String>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2433,
+      "start_col": 5,
+      "end_line": 2433,
+      "end_col": 73
+    },
+    "deps": [
+      182
+    ]
+  },
+  {
+    "uid": 221,
+    "path": "<<impl core::convert::From<CompactString> for std::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>::from::StringError as core::error::Error>::description",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2236,
+      "start_col": 13,
+      "end_line": 2236,
+      "end_col": 42
+    },
+    "deps": [
+      182
+    ]
+  },
+  {
+    "uid": 222,
+    "path": "<impl core::convert::From<&'a CompactString> for std::borrow::Cow<'a, str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2211,
+      "start_col": 5,
+      "end_line": 2211,
+      "end_col": 42
+    },
+    "deps": [
+      182
+    ]
+  },
+  {
+    "uid": 223,
+    "path": "CompactString::split_off",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1133,
+      "start_col": 5,
+      "end_line": 1133,
+      "end_col": 51
+    },
+    "deps": [
+      180,
+      158,
+      182,
+      162
+    ]
+  },
+  {
+    "uid": 224,
+    "path": "<<impl core::convert::From<CompactString> for std::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>::from::StringError as core::fmt::Display>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2242,
+      "start_col": 13,
+      "end_line": 2242,
+      "end_col": 69
+    },
+    "deps": [
+      183
+    ]
+  },
+  {
+    "uid": 225,
+    "path": "<<impl core::convert::From<CompactString> for std::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>::from::StringError as core::fmt::Debug>::fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2249,
+      "start_col": 13,
+      "end_line": 2249,
+      "end_col": 69
+    },
+    "deps": [
+      184
+    ]
+  },
+  {
+    "uid": 226,
+    "path": "<CompactString as core::cmp::PartialOrd>::partial_cmp",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2135,
+      "start_col": 5,
+      "end_line": 2135,
+      "end_col": 60
+    },
+    "deps": [
+      189
+    ]
+  },
+  {
+    "uid": 227,
+    "path": "CompactString::drain",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1172,
+      "start_col": 5,
+      "end_line": 1172,
+      "end_col": 73
+    },
+    "deps": [
+      182,
+      206
+    ]
+  },
+  {
+    "uid": 228,
+    "path": "<impl core::convert::From<CompactString> for std::vec::Vec<u8>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2299,
+      "start_col": 5,
+      "end_line": 2299,
+      "end_col": 42
+    },
+    "deps": [
+      146,
+      207,
+      150
+    ]
+  },
+  {
+    "uid": 229,
+    "path": "<impl core::convert::From<CompactString> for std::ffi::OsString>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2279,
+      "start_col": 5,
+      "end_line": 2279,
+      "end_col": 42
+    },
+    "deps": [
+      207
+    ]
+  },
+  {
+    "uid": 230,
+    "path": "<impl core::convert::From<CompactString> for std::boxed::Box<str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2268,
+      "start_col": 5,
+      "end_line": 2268,
+      "end_col": 42
+    },
+    "deps": [
+      146,
+      163,
+      207
+    ]
+  },
+  {
+    "uid": 231,
+    "path": "<impl core::convert::From<CompactString> for std::borrow::Cow<'_, str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2200,
+      "start_col": 5,
+      "end_line": 2200,
+      "end_col": 38
+    },
+    "deps": [
+      207,
+      162
+    ]
+  },
+  {
+    "uid": 232,
+    "path": "<impl core::convert::From<CompactString> for std::string::String>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2193,
+      "start_col": 5,
+      "end_line": 2193,
+      "end_col": 38
+    },
+    "deps": [
+      207
+    ]
+  },
+  {
+    "uid": 233,
+    "path": "repr::Repr::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 68,
+      "start_col": 5,
+      "end_line": 68,
+      "end_col": 64
+    },
+    "deps": [
+      209,
+      115,
+      24
+    ]
+  },
+  {
+    "uid": 234,
+    "path": "repr::Repr::new_panic",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 88,
+      "start_col": 5,
+      "end_line": 88,
+      "end_col": 48
+    },
+    "deps": [
+      23,
+      24,
+      71,
+      210
+    ]
+  },
+  {
+    "uid": 235,
+    "path": "<CompactString as core::convert::From<std::boxed::Box<str>>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2184,
+      "start_col": 5,
+      "end_line": 2184,
+      "end_col": 33
+    },
+    "deps": [
+      130,
+      211
+    ]
+  },
+  {
+    "uid": 236,
+    "path": "<CompactString as core::convert::From<std::string::String>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2157,
+      "start_col": 5,
+      "end_line": 2157,
+      "end_col": 31
+    },
+    "deps": [
+      130,
+      211
+    ]
+  },
+  {
+    "uid": 237,
+    "path": "CompactString::from_string_buffer",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1649,
+      "start_col": 5,
+      "end_line": 1649,
+      "end_col": 49
+    },
+    "deps": [
+      130,
+      211
+    ]
+  },
+  {
+    "uid": 238,
+    "path": "repr::iter::from_as_ref_str_iterator",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 34,
+      "start_col": 1,
+      "end_line": 39,
+      "end_col": 29
+    },
+    "deps": [
+      23,
+      62,
+      130,
+      77,
+      211
+    ]
+  },
+  {
+    "uid": 239,
+    "path": "repr::Repr::reserve",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 256,
+      "start_col": 5,
+      "end_line": 256,
+      "end_col": 84
+    },
+    "deps": [
+      23,
+      24,
+      65,
+      112,
+      113,
+      135,
+      71,
+      212,
+      72,
+      149,
+      156,
+      172
+    ]
+  },
+  {
+    "uid": 240,
+    "path": "repr::Repr::with_capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 127,
+      "start_col": 5,
+      "end_line": 127,
+      "end_col": 79
+    },
+    "deps": [
+      213
+    ]
+  },
+  {
+    "uid": 241,
+    "path": "<repr::heap::HeapBuffer as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/heap.rs",
+      "start_line": 310,
+      "start_col": 5,
+      "end_line": 310,
+      "end_col": 28
+    },
+    "deps": [
+      16,
+      64,
+      137,
+      213,
+      134
+    ]
+  },
+  {
+    "uid": 242,
+    "path": "<impl core::iter::Extend<CompactString> for std::borrow::Cow<'_, str>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2449,
+      "start_col": 5,
+      "end_line": 2449,
+      "end_col": 73
+    },
+    "deps": [
+      220
+    ]
+  },
+  {
+    "uid": 243,
+    "path": "<impl core::iter::FromIterator<CompactString> for std::string::String>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2377,
+      "start_col": 5,
+      "end_line": 2377,
+      "end_col": 73
+    },
+    "deps": [
+      220,
+      207
+    ]
+  },
+  {
+    "uid": 244,
+    "path": "<impl core::convert::From<CompactString> for std::path::PathBuf>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2286,
+      "start_col": 5,
+      "end_line": 2286,
+      "end_col": 42
+    },
+    "deps": [
+      229
+    ]
+  },
+  {
+    "uid": 245,
+    "path": "repr::num::<impl repr::traits::IntoRepr for i128>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 150,
+      "start_col": 5,
+      "end_line": 150,
+      "end_col": 61
+    },
+    "deps": [
+      233
+    ]
+  },
+  {
+    "uid": 246,
+    "path": "repr::num::<impl repr::traits::IntoRepr for u128>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 142,
+      "start_col": 5,
+      "end_line": 142,
+      "end_col": 61
+    },
+    "deps": [
+      233
+    ]
+  },
+  {
+    "uid": 247,
+    "path": "repr::num::<impl repr::traits::IntoRepr for isize>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      116
+    ]
+  },
+  {
+    "uid": 248,
+    "path": "repr::num::<impl repr::traits::IntoRepr for usize>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      117
+    ]
+  },
+  {
+    "uid": 249,
+    "path": "repr::num::<impl repr::traits::IntoRepr for i64>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      25
+    ]
+  },
+  {
+    "uid": 250,
+    "path": "repr::num::<impl repr::traits::IntoRepr for u64>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      27
+    ]
+  },
+  {
+    "uid": 251,
+    "path": "repr::num::<impl repr::traits::IntoRepr for i32>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      29
+    ]
+  },
+  {
+    "uid": 252,
+    "path": "repr::num::<impl repr::traits::IntoRepr for u32>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      30
+    ]
+  },
+  {
+    "uid": 253,
+    "path": "repr::num::<impl repr::traits::IntoRepr for i16>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      31
+    ]
+  },
+  {
+    "uid": 254,
+    "path": "repr::num::<impl repr::traits::IntoRepr for u16>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      32
+    ]
+  },
+  {
+    "uid": 255,
+    "path": "repr::num::<impl repr::traits::IntoRepr for i8>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      33
+    ]
+  },
+  {
+    "uid": 256,
+    "path": "repr::num::<impl repr::traits::IntoRepr for u8>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 23,
+      "start_col": 13,
+      "end_line": 23,
+      "end_col": 69
+    },
+    "deps": [
+      233,
+      23,
+      34
+    ]
+  },
+  {
+    "uid": 257,
+    "path": "repr::Repr::as_mut_ptr::inline_static_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 527,
+      "start_col": 9,
+      "end_line": 527,
+      "end_col": 46
+    },
+    "deps": [
+      233,
+      130,
+      148
+    ]
+  },
+  {
+    "uid": 258,
+    "path": "repr::Repr::from_utf8",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 137,
+      "start_col": 5,
+      "end_line": 137,
+      "end_col": 79
+    },
+    "deps": [
+      233,
+      130
+    ]
+  },
+  {
+    "uid": 259,
+    "path": "CompactString::try_new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 203,
+      "start_col": 5,
+      "end_line": 203,
+      "end_col": 73
+    },
+    "deps": [
+      233,
+      211
+    ]
+  },
+  {
+    "uid": 260,
+    "path": "<char as repr::traits::IntoRepr>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/traits.rs",
+      "start_line": 45,
+      "start_col": 5,
+      "end_line": 45,
+      "end_col": 61
+    },
+    "deps": [
+      233
+    ]
+  },
+  {
+    "uid": 261,
+    "path": "<f64 as repr::traits::IntoRepr>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/traits.rs",
+      "start_line": 25,
+      "start_col": 5,
+      "end_line": 25,
+      "end_col": 61
+    },
+    "deps": [
+      233
+    ]
+  },
+  {
+    "uid": 262,
+    "path": "<f32 as repr::traits::IntoRepr>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/traits.rs",
+      "start_line": 16,
+      "start_col": 5,
+      "end_line": 16,
+      "end_col": 61
+    },
+    "deps": [
+      233
+    ]
+  },
+  {
+    "uid": 263,
+    "path": "<str as traits::ToCompactString>::try_to_compact_string",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/traits.rs",
+      "start_line": 66,
+      "start_col": 5,
+      "end_line": 66,
+      "end_col": 83
+    },
+    "deps": [
+      233
+    ]
+  },
+  {
+    "uid": 264,
+    "path": "CompactString::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 187,
+      "start_col": 5,
+      "end_line": 187,
+      "end_col": 47
+    },
+    "deps": [
+      130,
+      234,
+      211
+    ]
+  },
+  {
+    "uid": 265,
+    "path": "CompactString::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 187,
+      "start_col": 5,
+      "end_line": 187,
+      "end_col": 47
+    },
+    "deps": [
+      130,
+      234,
+      211
+    ]
+  },
+  {
+    "uid": 266,
+    "path": "<repr::Repr as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 778,
+      "start_col": 5,
+      "end_line": 778,
+      "end_col": 28
+    },
+    "deps": [
+      112,
+      149,
+      234
+    ]
+  },
+  {
+    "uid": 267,
+    "path": "CompactString::new",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 187,
+      "start_col": 5,
+      "end_line": 187,
+      "end_col": 47
+    },
+    "deps": [
+      130,
+      234,
+      211
+    ]
+  },
+  {
+    "uid": 268,
+    "path": "repr::iter::<impl core::iter::FromIterator<std::borrow::Cow<'a, str>> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 104,
+      "start_col": 5,
+      "end_line": 104,
+      "end_col": 72
+    },
+    "deps": [
+      238
+    ]
+  },
+  {
+    "uid": 269,
+    "path": "repr::iter::<impl core::iter::FromIterator<CompactString> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 98,
+      "start_col": 5,
+      "end_line": 98,
+      "end_col": 73
+    },
+    "deps": [
+      238
+    ]
+  },
+  {
+    "uid": 270,
+    "path": "repr::iter::<impl core::iter::FromIterator<std::string::String> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 92,
+      "start_col": 5,
+      "end_line": 92,
+      "end_col": 66
+    },
+    "deps": [
+      238
+    ]
+  },
+  {
+    "uid": 271,
+    "path": "repr::iter::<impl core::iter::FromIterator<std::boxed::Box<str>> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 86,
+      "start_col": 5,
+      "end_line": 86,
+      "end_col": 68
+    },
+    "deps": [
+      238
+    ]
+  },
+  {
+    "uid": 272,
+    "path": "repr::iter::<impl core::iter::FromIterator<&'a str> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 80,
+      "start_col": 5,
+      "end_line": 80,
+      "end_col": 67
+    },
+    "deps": [
+      238
+    ]
+  },
+  {
+    "uid": 273,
+    "path": "CompactString::try_reserve",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 556,
+      "start_col": 5,
+      "end_line": 556,
+      "end_col": 81
+    },
+    "deps": [
+      239
+    ]
+  },
+  {
+    "uid": 274,
+    "path": "CompactString::try_with_capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 314,
+      "start_col": 5,
+      "end_line": 314,
+      "end_col": 76
+    },
+    "deps": [
+      240
+    ]
+  },
+  {
+    "uid": 275,
+    "path": "<impl core::iter::FromIterator<CompactString> for std::borrow::Cow<'_, str>>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2391,
+      "start_col": 5,
+      "end_line": 2391,
+      "end_col": 73
+    },
+    "deps": [
+      243
+    ]
+  },
+  {
+    "uid": 276,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<i128>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      245
+    ]
+  },
+  {
+    "uid": 277,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<u128>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      246
+    ]
+  },
+  {
+    "uid": 278,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<isize>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      247
+    ]
+  },
+  {
+    "uid": 279,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<usize>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      248
+    ]
+  },
+  {
+    "uid": 280,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<i64>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      249
+    ]
+  },
+  {
+    "uid": 281,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<u64>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      250
+    ]
+  },
+  {
+    "uid": 282,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<i32>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      251
+    ]
+  },
+  {
+    "uid": 283,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<u32>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      252
+    ]
+  },
+  {
+    "uid": 284,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<i16>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      253
+    ]
+  },
+  {
+    "uid": 285,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<u16>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      254
+    ]
+  },
+  {
+    "uid": 286,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<i8>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      255
+    ]
+  },
+  {
+    "uid": 287,
+    "path": "repr::num::<impl repr::traits::IntoRepr for core::num::NonZero<u8>>::into_repr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/num.rs",
+      "start_line": 161,
+      "start_col": 13,
+      "end_line": 161,
+      "end_col": 69
+    },
+    "deps": [
+      256
+    ]
+  },
+  {
+    "uid": 288,
+    "path": "repr::Repr::as_mut_ptr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 525,
+      "start_col": 5,
+      "end_line": 525,
+      "end_col": 51
+    },
+    "deps": [
+      65,
+      112,
+      113,
+      257
+    ]
+  },
+  {
+    "uid": 289,
+    "path": "CompactString::from_utf8",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 346,
+      "start_col": 5,
+      "end_line": 346,
+      "end_col": 72
+    },
+    "deps": [
+      258
+    ]
+  },
+  {
+    "uid": 290,
+    "path": "<CompactString as core::convert::From<&'a str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2149,
+      "start_col": 5,
+      "end_line": 2149,
+      "end_col": 32
+    },
+    "deps": [
+      264
+    ]
+  },
+  {
+    "uid": 291,
+    "path": "<CompactString as core::convert::From<&'a str>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2149,
+      "start_col": 5,
+      "end_line": 2149,
+      "end_col": 32
+    },
+    "deps": [
+      264
+    ]
+  },
+  {
+    "uid": 292,
+    "path": "<str as traits::ToCompactString>::to_compact_string",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/traits.rs",
+      "start_line": 61,
+      "start_col": 5,
+      "end_line": 61,
+      "end_col": 49
+    },
+    "deps": [
+      264
+    ]
+  },
+  {
+    "uid": 293,
+    "path": "<CompactString as core::convert::From<&'a std::string::String>>::from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2166,
+      "start_col": 5,
+      "end_line": 2166,
+      "end_col": 35
+    },
+    "deps": [
+      265
+    ]
+  },
+  {
+    "uid": 294,
+    "path": "<CompactString as core::clone::Clone>::clone",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1979,
+      "start_col": 5,
+      "end_line": 1979,
+      "end_col": 28
+    },
+    "deps": [
+      266
+    ]
+  },
+  {
+    "uid": 295,
+    "path": "CompactString::reserve",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 547,
+      "start_col": 5,
+      "end_line": 547,
+      "end_col": 49
+    },
+    "deps": [
+      131,
+      273
+    ]
+  },
+  {
+    "uid": 296,
+    "path": "CompactString::with_capacity",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 305,
+      "start_col": 5,
+      "end_line": 305,
+      "end_col": 50
+    },
+    "deps": [
+      133,
+      274
+    ]
+  },
+  {
+    "uid": 297,
+    "path": "CompactString::as_mut_ptr",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1037,
+      "start_col": 5,
+      "end_line": 1037,
+      "end_col": 44
+    },
+    "deps": [
+      288
+    ]
+  },
+  {
+    "uid": 298,
+    "path": "repr::Repr::push_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 348,
+      "start_col": 5,
+      "end_line": 348,
+      "end_col": 47
+    },
+    "deps": [
+      161,
+      113,
+      288,
+      135,
+      131,
+      239,
+      172
+    ]
+  },
+  {
+    "uid": 299,
+    "path": "CompactString::as_mut_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 585,
+      "start_col": 5,
+      "end_line": 585,
+      "end_col": 45
+    },
+    "deps": [
+      288,
+      154
+    ]
+  },
+  {
+    "uid": 300,
+    "path": "CompactString::spare_capacity_mut",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 625,
+      "start_col": 5,
+      "end_line": 625,
+      "end_col": 79
+    },
+    "deps": [
+      288,
+      154,
+      208
+    ]
+  },
+  {
+    "uid": 301,
+    "path": "CompactString::retain",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1268,
+      "start_col": 5,
+      "end_line": 1268,
+      "end_col": 70
+    },
+    "deps": [
+      288,
+      154
+    ]
+  },
+  {
+    "uid": 302,
+    "path": "CompactString::as_mut_bytes",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 671,
+      "start_col": 5,
+      "end_line": 671,
+      "end_col": 55
+    },
+    "deps": [
+      288,
+      154
+    ]
+  },
+  {
+    "uid": 303,
+    "path": "repr::Repr::from_utf8_unchecked",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 151,
+      "start_col": 5,
+      "end_line": 151,
+      "end_col": 99
+    },
+    "deps": [
+      161,
+      288,
+      240
+    ]
+  },
+  {
+    "uid": 304,
+    "path": "<CompactString as core::str::FromStr>::from_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2310,
+      "start_col": 5,
+      "end_line": 2310,
+      "end_col": 61
+    },
+    "deps": [
+      290
+    ]
+  },
+  {
+    "uid": 305,
+    "path": "CompactString::repeat",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 982,
+      "start_col": 5,
+      "end_line": 982,
+      "end_col": 43
+    },
+    "deps": [
+      154,
+      158,
+      155,
+      294,
+      296
+    ]
+  },
+  {
+    "uid": 306,
+    "path": "CompactString::replace_range_shrink",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 920,
+      "start_col": 5,
+      "end_line": 920,
+      "end_col": 92
+    },
+    "deps": [
+      180,
+      297,
+      154
+    ]
+  },
+  {
+    "uid": 307,
+    "path": "CompactString::insert_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1053,
+      "start_col": 5,
+      "end_line": 1053,
+      "end_col": 59
+    },
+    "deps": [
+      180,
+      297,
+      154,
+      182,
+      295
+    ]
+  },
+  {
+    "uid": 308,
+    "path": "CompactString::replace_range_grow",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 939,
+      "start_col": 5,
+      "end_line": 939,
+      "end_col": 90
+    },
+    "deps": [
+      180,
+      297,
+      154,
+      295
+    ]
+  },
+  {
+    "uid": 309,
+    "path": "CompactString::replace_range_same_size",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 911,
+      "start_col": 5,
+      "end_line": 911,
+      "end_col": 95
+    },
+    "deps": [
+      297
+    ]
+  },
+  {
+    "uid": 310,
+    "path": "CompactString::push_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 727,
+      "start_col": 5,
+      "end_line": 727,
+      "end_col": 40
+    },
+    "deps": [
+      298
+    ]
+  },
+  {
+    "uid": 311,
+    "path": "<repr::Repr as core::iter::Extend<char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 839,
+      "start_col": 5,
+      "end_line": 839,
+      "end_col": 64
+    },
+    "deps": [
+      161,
+      288,
+      135,
+      298,
+      239,
+      172
+    ]
+  },
+  {
+    "uid": 312,
+    "path": "<repr::Repr as core::clone::Clone>::clone_from::clone_from_heap",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 798,
+      "start_col": 9,
+      "end_line": 798,
+      "end_col": 59
+    },
+    "deps": [
+      161,
+      298,
+      149
+    ]
+  },
+  {
+    "uid": 313,
+    "path": "<repr::Repr as core::iter::Extend<char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 839,
+      "start_col": 5,
+      "end_line": 839,
+      "end_col": 64
+    },
+    "deps": [
+      161,
+      288,
+      135,
+      298,
+      239,
+      172
+    ]
+  },
+  {
+    "uid": 314,
+    "path": "<repr::Repr as core::iter::Extend<char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 839,
+      "start_col": 5,
+      "end_line": 839,
+      "end_col": 64
+    },
+    "deps": [
+      161,
+      288,
+      135,
+      298,
+      239,
+      172
+    ]
+  },
+  {
+    "uid": 315,
+    "path": "repr::Repr::shrink_to",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 297,
+      "start_col": 5,
+      "end_line": 297,
+      "end_col": 60
+    },
+    "deps": [
+      23,
+      62,
+      65,
+      112,
+      298,
+      149,
+      156,
+      137,
+      240,
+      139
+    ]
+  },
+  {
+    "uid": 316,
+    "path": "<repr::Repr as core::iter::Extend<std::string::String>>::extend::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 918,
+      "start_col": 35,
+      "end_line": 918,
+      "end_col": 43
+    },
+    "deps": [
+      298
+    ]
+  },
+  {
+    "uid": 317,
+    "path": "<repr::Repr as core::iter::Extend<std::borrow::Cow<'a, str>>>::extend::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 912,
+      "start_col": 35,
+      "end_line": 912,
+      "end_col": 43
+    },
+    "deps": [
+      298
+    ]
+  },
+  {
+    "uid": 318,
+    "path": "<repr::Repr as core::iter::Extend<std::boxed::Box<str>>>::extend::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 906,
+      "start_col": 35,
+      "end_line": 906,
+      "end_col": 43
+    },
+    "deps": [
+      298
+    ]
+  },
+  {
+    "uid": 319,
+    "path": "<repr::Repr as core::iter::Extend<&'a str>>::extend::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 900,
+      "start_col": 35,
+      "end_line": 900,
+      "end_col": 38
+    },
+    "deps": [
+      298
+    ]
+  },
+  {
+    "uid": 320,
+    "path": "repr::iter::<impl core::iter::FromIterator<char> for repr::Repr>::from_iter",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/iter.rs",
+      "start_line": 12,
+      "start_col": 5,
+      "end_line": 12,
+      "end_col": 64
+    },
+    "deps": [
+      298,
+      240
+    ]
+  },
+  {
+    "uid": 321,
+    "path": "<CompactString as core::borrow::BorrowMut<str>>::borrow_mut",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2043,
+      "start_col": 5,
+      "end_line": 2043,
+      "end_col": 41
+    },
+    "deps": [
+      299
+    ]
+  },
+  {
+    "uid": 322,
+    "path": "<CompactString as core::ops::DerefMut>::deref_mut",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2007,
+      "start_col": 5,
+      "end_line": 2007,
+      "end_col": 40
+    },
+    "deps": [
+      299
+    ]
+  },
+  {
+    "uid": 323,
+    "path": "CompactString::remove",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 772,
+      "start_col": 5,
+      "end_line": 772,
+      "end_col": 49
+    },
+    "deps": [
+      180,
+      154,
+      299
+    ]
+  },
+  {
+    "uid": 324,
+    "path": "convert_while_ascii",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1935,
+      "start_col": 1,
+      "end_line": 1935,
+      "end_col": 74
+    },
+    "deps": [
+      180,
+      300,
+      296
+    ]
+  },
+  {
+    "uid": 325,
+    "path": "CompactString::from_utf8_unchecked",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 382,
+      "start_col": 5,
+      "end_line": 382,
+      "end_col": 70
+    },
+    "deps": [
+      133,
+      303
+    ]
+  },
+  {
+    "uid": 326,
+    "path": "<Drain<'_> as core::ops::Drop>::drop",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2551,
+      "start_col": 5,
+      "end_line": 2551,
+      "end_col": 23
+    },
+    "deps": [
+      306
+    ]
+  },
+  {
+    "uid": 327,
+    "path": "CompactString::insert",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1091,
+      "start_col": 5,
+      "end_line": 1091,
+      "end_col": 51
+    },
+    "deps": [
+      307
+    ]
+  },
+  {
+    "uid": 328,
+    "path": "CompactString::replace_range",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 900,
+      "start_col": 5,
+      "end_line": 900,
+      "end_col": 88
+    },
+    "deps": [
+      306,
+      206,
+      308,
+      309
+    ]
+  },
+  {
+    "uid": 329,
+    "path": "<CompactString as core::ops::AddAssign<&str>>::add_assign",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2488,
+      "start_col": 5,
+      "end_line": 2488,
+      "end_col": 40
+    },
+    "deps": [
+      310
+    ]
+  },
+  {
+    "uid": 330,
+    "path": "<CompactString as core::ops::Add<&str>>::add",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2481,
+      "start_col": 5,
+      "end_line": 2481,
+      "end_col": 48
+    },
+    "deps": [
+      310
+    ]
+  },
+  {
+    "uid": 331,
+    "path": "<CompactString as core::fmt::Write>::write_fmt",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2460,
+      "start_col": 5,
+      "end_line": 2460,
+      "end_col": 79
+    },
+    "deps": [
+      310,
+      158,
+      146,
+      155
+    ]
+  },
+  {
+    "uid": 332,
+    "path": "<CompactString as core::fmt::Write>::write_str",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2455,
+      "start_col": 5,
+      "end_line": 2455,
+      "end_col": 52
+    },
+    "deps": [
+      310
+    ]
+  },
+  {
+    "uid": 333,
+    "path": "<CompactString as core::iter::Extend<CompactString>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2441,
+      "start_col": 5,
+      "end_line": 2441,
+      "end_col": 73
+    },
+    "deps": [
+      310,
+      182
+    ]
+  },
+  {
+    "uid": 334,
+    "path": "<CompactString as core::iter::Extend<std::borrow::Cow<'a, str>>>::extend::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2422,
+      "start_col": 35,
+      "end_line": 2422,
+      "end_col": 43
+    },
+    "deps": [
+      310
+    ]
+  },
+  {
+    "uid": 335,
+    "path": "CompactString::from_str_to_lowercase::map_uppercase_sigma",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1817,
+      "start_col": 9,
+      "end_line": 1817,
+      "end_col": 77
+    },
+    "deps": [
+      310,
+      167,
+      168
+    ]
+  },
+  {
+    "uid": 336,
+    "path": "CompactString::push",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 692,
+      "start_col": 5,
+      "end_line": 692,
+      "end_col": 37
+    },
+    "deps": [
+      310
+    ]
+  },
+  {
+    "uid": 337,
+    "path": "CompactString::from_utf8_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1354,
+      "start_col": 5,
+      "end_line": 1354,
+      "end_col": 45
+    },
+    "deps": [
+      310,
+      264,
+      296
+    ]
+  },
+  {
+    "uid": 338,
+    "path": "CompactString::repeat::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 990,
+      "start_col": 29,
+      "end_line": 990,
+      "end_col": 32
+    },
+    "deps": [
+      310,
+      182
+    ]
+  },
+  {
+    "uid": 339,
+    "path": "CompactString::repeat::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 990,
+      "start_col": 29,
+      "end_line": 990,
+      "end_col": 32
+    },
+    "deps": [
+      310,
+      182
+    ]
+  },
+  {
+    "uid": 340,
+    "path": "<C as traits::CompactStringExt>::join_compact",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/traits.rs",
+      "start_line": 196,
+      "start_col": 5,
+      "end_line": 196,
+      "end_col": 72
+    },
+    "deps": [
+      310,
+      158
+    ]
+  },
+  {
+    "uid": 341,
+    "path": "<C as traits::CompactStringExt>::concat_compact::{closure#0}",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/traits.rs",
+      "start_line": 190,
+      "start_col": 49,
+      "end_line": 190,
+      "end_col": 62
+    },
+    "deps": [
+      310
+    ]
+  },
+  {
+    "uid": 342,
+    "path": "<repr::Repr as core::iter::Extend<&'a char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 893,
+      "start_col": 5,
+      "end_line": 893,
+      "end_col": 68
+    },
+    "deps": [
+      311
+    ]
+  },
+  {
+    "uid": 343,
+    "path": "<CompactString as core::iter::Extend<char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2397,
+      "start_col": 5,
+      "end_line": 2397,
+      "end_col": 64
+    },
+    "deps": [
+      311
+    ]
+  },
+  {
+    "uid": 344,
+    "path": "<repr::Repr as core::clone::Clone>::clone_from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/repr/mod.rs",
+      "start_line": 796,
+      "start_col": 5,
+      "end_line": 796,
+      "end_col": 44
+    },
+    "deps": [
+      112,
+      312
+    ]
+  },
+  {
+    "uid": 345,
+    "path": "<CompactString as core::iter::Extend<char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2397,
+      "start_col": 5,
+      "end_line": 2397,
+      "end_col": 64
+    },
+    "deps": [
+      313
+    ]
+  },
+  {
+    "uid": 346,
+    "path": "<CompactString as core::iter::Extend<char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2397,
+      "start_col": 5,
+      "end_line": 2397,
+      "end_col": 64
+    },
+    "deps": [
+      314
+    ]
+  },
+  {
+    "uid": 347,
+    "path": "CompactString::shrink_to_fit",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1245,
+      "start_col": 5,
+      "end_line": 1245,
+      "end_col": 36
+    },
+    "deps": [
+      315
+    ]
+  },
+  {
+    "uid": 348,
+    "path": "CompactString::shrink_to",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1208,
+      "start_col": 5,
+      "end_line": 1208,
+      "end_col": 53
+    },
+    "deps": [
+      315
+    ]
+  },
+  {
+    "uid": 349,
+    "path": "CompactString::to_ascii_uppercase",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1702,
+      "start_col": 5,
+      "end_line": 1702,
+      "end_col": 45
+    },
+    "deps": [
+      322,
+      294
+    ]
+  },
+  {
+    "uid": 350,
+    "path": "CompactString::to_ascii_lowercase",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1675,
+      "start_col": 5,
+      "end_line": 1675,
+      "end_col": 45
+    },
+    "deps": [
+      322,
+      294
+    ]
+  },
+  {
+    "uid": 351,
+    "path": "<T as traits::ToCompactString>::try_to_compact_string",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/traits.rs",
+      "start_line": 90,
+      "start_col": 5,
+      "end_line": 90,
+      "end_col": 83
+    },
+    "deps": [
+      276,
+      245,
+      233,
+      277,
+      246,
+      278,
+      247,
+      279,
+      248,
+      280,
+      249,
+      281,
+      250,
+      282,
+      251,
+      283,
+      252,
+      284,
+      253,
+      285,
+      254,
+      286,
+      255,
+      287,
+      256,
+      331,
+      158,
+      182,
+      260,
+      100,
+      261,
+      262
+    ]
+  },
+  {
+    "uid": 352,
+    "path": "CompactString::from_utf16x_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1437,
+      "start_col": 5,
+      "end_line": 1441,
+      "end_col": 14
+    },
+    "deps": [
+      310,
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 353,
+    "path": "CompactString::from_utf16x_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1437,
+      "start_col": 5,
+      "end_line": 1441,
+      "end_col": 14
+    },
+    "deps": [
+      310,
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 354,
+    "path": "CompactString::from_utf16x",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1398,
+      "start_col": 5,
+      "end_line": 1402,
+      "end_col": 34
+    },
+    "deps": [
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 355,
+    "path": "CompactString::from_utf16x",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1398,
+      "start_col": 5,
+      "end_line": 1402,
+      "end_col": 34
+    },
+    "deps": [
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 356,
+    "path": "CompactString::from_utf16x_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1437,
+      "start_col": 5,
+      "end_line": 1441,
+      "end_col": 14
+    },
+    "deps": [
+      310,
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 357,
+    "path": "CompactString::from_utf16x",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1398,
+      "start_col": 5,
+      "end_line": 1402,
+      "end_col": 34
+    },
+    "deps": [
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 358,
+    "path": "CompactString::from_utf16_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 446,
+      "start_col": 5,
+      "end_line": 446,
+      "end_col": 61
+    },
+    "deps": [
+      310,
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 359,
+    "path": "CompactString::from_utf16",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 410,
+      "start_col": 5,
+      "end_line": 410,
+      "end_col": 75
+    },
+    "deps": [
+      296,
+      336
+    ]
+  },
+  {
+    "uid": 360,
+    "path": "<CompactString as core::iter::Extend<&'a char>>::extend",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 2403,
+      "start_col": 5,
+      "end_line": 2403,
+      "end_col": 68
+    },
+    "deps": [
+      342
+    ]
+  },
+  {
+    "uid": 361,
+    "path": "<CompactString as core::clone::Clone>::clone_from",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1984,
+      "start_col": 5,
+      "end_line": 1984,
+      "end_col": 44
+    },
+    "deps": [
+      344
+    ]
+  },
+  {
+    "uid": 362,
+    "path": "CompactString::from_str_to_uppercase",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1914,
+      "start_col": 5,
+      "end_line": 1914,
+      "end_col": 54
+    },
+    "deps": [
+      154,
+      324,
+      345
+    ]
+  },
+  {
+    "uid": 363,
+    "path": "CompactString::from_str_to_lowercase",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1796,
+      "start_col": 5,
+      "end_line": 1796,
+      "end_col": 54
+    },
+    "deps": [
+      154,
+      324,
+      335,
+      346
+    ]
+  },
+  {
+    "uid": 364,
+    "path": "CompactString::from_utf16be_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1559,
+      "start_col": 5,
+      "end_line": 1559,
+      "end_col": 59
+    },
+    "deps": [
+      352
+    ]
+  },
+  {
+    "uid": 365,
+    "path": "CompactString::from_utf16le_lossy",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1539,
+      "start_col": 5,
+      "end_line": 1539,
+      "end_col": 59
+    },
+    "deps": [
+      353
+    ]
+  },
+  {
+    "uid": 366,
+    "path": "CompactString::from_utf16be",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1519,
+      "start_col": 5,
+      "end_line": 1519,
+      "end_col": 73
+    },
+    "deps": [
+      354
+    ]
+  },
+  {
+    "uid": 367,
+    "path": "CompactString::from_utf16le",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1499,
+      "start_col": 5,
+      "end_line": 1499,
+      "end_col": 73
+    },
+    "deps": [
+      355
+    ]
+  },
+  {
+    "uid": 368,
+    "path": "CompactString::to_uppercase",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1874,
+      "start_col": 5,
+      "end_line": 1874,
+      "end_col": 39
+    },
+    "deps": [
+      163,
+      362
+    ]
+  },
+  {
+    "uid": 369,
+    "path": "CompactString::to_lowercase",
+    "span": {
+      "file": "/Users/kristofergaudel/Desktop/Code/centrifuge/crates/compact_str/src/lib.rs",
+      "start_line": 1752,
+      "start_col": 5,
+      "end_line": 1752,
+      "end_col": 39
+    },
+    "deps": [
+      163,
+      363
+    ]
+  }
+]

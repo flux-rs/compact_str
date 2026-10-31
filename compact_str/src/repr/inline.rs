@@ -17,6 +17,7 @@ impl InlineBuffer {
     ///
     /// SAFETY:
     /// * The caller must guarantee that the length of `text` is less than [`MAX_SIZE`]
+    #[flux_rs::spec(fn(text: &str[@t]) -> InlineBuffer requires crate::flux_specs::str_len(t) <= 24)]
     #[inline]
     #[cfg(all(target_pointer_width = "64", target_endian = "little"))]
     pub(crate) unsafe fn new(text: &str) -> Self {
@@ -158,6 +159,7 @@ impl InlineBuffer {
         buffer
     }
 
+    #[flux_rs::spec(fn(text: &str[@t]) -> InlineBuffer requires crate::flux_specs::str_len(t) <= 24)]
     #[inline]
     pub(crate) const fn new_const(text: &str) -> Self {
         if text.len() > MAX_SIZE {
@@ -184,6 +186,7 @@ impl InlineBuffer {
     }
 
     /// Returns an empty [`InlineBuffer`]
+    #[flux_rs::trusted(reason = "ASSUMED: flux doesn't know the length of the literal `\"\"`")]
     #[inline(always)]
     pub(crate) const fn empty() -> Self {
         Self::new_const("")
@@ -218,6 +221,7 @@ impl InlineBuffer {
     ///
     /// # SAFETY:
     /// * The caller must guarantee that `len` bytes in the buffer are valid UTF-8
+    #[flux_rs::spec(fn(&mut InlineBuffer, len: usize) requires len <= 24)]
     #[inline]
     pub(crate) unsafe fn set_len(&mut self, len: usize) {
         debug_assert!(len <= MAX_SIZE);

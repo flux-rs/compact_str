@@ -73,7 +73,7 @@ where
     // SAFETY: Everything we just pushed onto the buffer is a `str` which is valid UTF-8
     unsafe { inline_buf.set_len(curr_len) }
 
-    Repr::from_inline(inline_buf)
+    Repr::from_inline(inline_buf, curr_len)
 }
 
 impl<'a> FromIterator<&'a str> for Repr {

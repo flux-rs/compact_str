@@ -1,6 +1,10 @@
 #![doc = include_str!("../README.md")]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![no_std]
+// CENTRIFUGE: flux injects `#![feature(custom_inner_attributes)]`.
+#![cfg_attr(flux, allow(unused_features))]
+// CENTRIFUGE: check `+`, `*` etc. too, and let flux see through raw pointers.
+#![cfg_attr(flux, flux::opts(check_overflow = "strict", allow_raw_deref = "ok"))]
 
 #[cfg(feature = "std")]
 #[macro_use]
@@ -24,6 +28,14 @@ use core::str::{FromStr, Utf8Error};
 use core::{fmt, mem, slice};
 #[cfg(feature = "std")]
 use std::ffi::OsStr;
+
+// CENTRIFUGE: load flux's extern specs for core and alloc.
+#[cfg(flux)]
+extern crate flux_alloc;
+#[cfg(flux)]
+extern crate flux_core;
+#[cfg(flux)]
+mod flux_specs;
 
 mod features;
 mod macros;
@@ -2673,6 +2685,7 @@ trait UnwrapWithMsg {
 impl<T, E: fmt::Display> UnwrapWithMsg for Result<T, E> {
     type T = T;
 
+    #[flux_rs::spec(fn(Result<T, E>[@ok]) -> T ensures ok)]
     #[inline(always)]
     #[track_caller]
     fn unwrap_with_msg(self) -> T {

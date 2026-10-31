@@ -52,7 +52,9 @@ pub(crate) const MAX_VALUE: usize = {
 /// string larger than 16 megabytes probably isn't that uncommon.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(transparent)]
-pub(crate) struct Capacity(usize);
+#[flux_rs::refined_by(bits: int)]
+#[flux_rs::invariant(0 <= super::bits_cap(bits) && super::bits_cap(bits) <= 72057594037927934)]
+pub(crate) struct Capacity(#[flux_rs::field(usize[bits])] usize);
 
 static_assertions::assert_eq_size!(Capacity, usize);
 static_assertions::assert_eq_align!(Capacity, usize);
@@ -64,6 +66,8 @@ impl fmt::Debug for Capacity {
 }
 
 impl Capacity {
+    #[flux_rs::trusted(reason = "ASSUMED: flux can't see through the byte encoding; the round trip with as_usize is tested")]
+    #[flux_rs::spec(fn(capacity: usize) -> Capacity[super::cap_bits(capacity)] requires capacity <= MAX_VALUE)]
     #[inline]
     pub(crate) const fn new(capacity: usize) -> Self {
         cfg_if::cfg_if! {
@@ -98,6 +102,8 @@ impl Capacity {
     ///
     /// # SAFETY:
     /// * `self` must be less than or equal to [`MAX_VALUE`]
+    #[flux_rs::trusted(reason = "ASSUMED: flux can't see through the byte encoding; the round trip with new is tested")]
+    #[flux_rs::spec(fn(Capacity[@b]) -> usize[super::bits_cap(b)])]
     #[inline(always)]
     pub(crate) unsafe fn as_usize(self) -> usize {
         usize::from_le(self.0 & VALID_MASK)
@@ -105,6 +111,7 @@ impl Capacity {
 
     /// Returns whether or not this [`Capacity`] has a value that indicates the capacity is being
     /// stored on the heap
+    #[flux_rs::spec(fn(Capacity) -> bool[false])]
     #[inline(always)]
     pub(crate) fn is_heap(self) -> bool {
         cfg_if::cfg_if! {

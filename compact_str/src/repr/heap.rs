@@ -5,16 +5,42 @@ use super::capacity::Capacity;
 use super::{Repr, MAX_SIZE};
 use crate::{ReserveError, UnwrapWithMsg};
 
+flux_rs::defs! {
+    // What's behind a `HeapBuffer`'s pointer.
+    fn heap_nn(base: int, addr: int, size: int, cap: int) -> bool {
+        addr != 0 && base <= addr && cap <= size
+    }
+    // The capacity allocated for a request of `n`.
+    fn alloc_cap(n: int) -> int { if n > 32 { n } else { 32 } }
+
+    // `amortized_growth`.
+    fn sat(n: int) -> int { if n <= usize::MAX { n } else { usize::MAX } }
+    fn amortized(len: int, add: int) -> int {
+        if sat(len + add) > sat(3 * len) / 2 { sat(len + add) } else { sat(3 * len) / 2 }
+    }
+    fn extra_cap(len: int, add: int) -> int { alloc_cap(amortized(len, add)) }
+}
+
 /// The minimum size we'll allocate on the heap is one usize larger than our max inline size
 const MIN_HEAP_SIZE: usize = MAX_SIZE + mem::size_of::<usize>();
 
 const UNKNOWN: usize = 0;
 pub(crate) type StrBuffer = [u8; UNKNOWN];
 
+/// CENTRIFUGE: every request is capped at `capacity::MAX_VALUE` here, because `Capacity::new` makes
+/// that `assume`d. Nothing checks it for a large request: `try_with_capacity(usize::MAX)`.
+#[flux_rs::trusted(reason = "BUG: `Capacity::new` assumes a capacity below 2^56 - 2 that no caller checks (BUGS.md bug 1)")]
+#[flux_rs::spec(fn(capacity: usize) -> Capacity[super::cap_bits(capacity)])]
+#[inline(always)]
+fn request_capacity(capacity: usize) -> Capacity {
+    Capacity::new(capacity)
+}
+
 /// [`HeapBuffer`] grows at an amortized rates of 1.5x
 ///
 /// Note: this is different than [`std::string::String`], which grows at a rate of 2x. It's debated
 /// which is better, for now we'll stick with a rate of 1.5x
+#[flux_rs::spec(fn(cur_len: usize, additional: usize) -> usize[amortized(cur_len, additional)])]
 #[inline(always)]
 pub(crate) fn amortized_growth(cur_len: usize, additional: usize) -> usize {
     let required = cur_len.saturating_add(additional);
@@ -23,9 +49,14 @@ pub(crate) fn amortized_growth(cur_len: usize, additional: usize) -> usize {
 }
 
 #[repr(C)]
+#[flux_rs::refined_by(len: int, bits: int)]
+#[flux_rs::invariant(0 <= len && len <= super::bits_cap(bits) && super::bits_cap(bits) <= 72057594037927934)]
 pub(crate) struct HeapBuffer {
+    #[flux_rs::field(ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, super::bits_cap(bits))})]
     pub(crate) ptr: ptr::NonNull<u8>,
+    #[flux_rs::field(usize[len])]
     pub(crate) len: usize,
+    #[flux_rs::field(Capacity[bits])]
     pub(crate) cap: Capacity,
 }
 static_assertions::assert_eq_size!(HeapBuffer, Repr);
@@ -45,18 +76,23 @@ impl HeapBuffer {
     ///
     /// `#[cold]`/`#[inline(never)]` keeps the alloc/copy machinery out of line and lays
     /// the heap arm out cold at every callsite.
+    #[flux_rs::spec(fn(text: &str[@t]) -> Result<(ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, alloc_cap(crate::flux_specs::str_len(t)))}, Capacity[super::cap_bits(alloc_cap(crate::flux_specs::str_len(t)))]), ReserveError>)]
     #[cold]
     #[inline(never)]
     pub(crate) fn alloc_copy(text: &str) -> Result<(ptr::NonNull<u8>, Capacity), ReserveError> {
         let len = text.len();
         let (cap, ptr) = allocate_ptr(len)?;
+        let src = text.as_ptr();
+        // `ptr` is a fresh allocation.
+        #[cfg(flux)]
+        crate::flux_specs::disjoint(src, ptr.as_ptr(), len);
 
         // copy our string into the buffer we just allocated
         //
         // SAFETY: `src` (`text`) and `dest` (`ptr`) are both valid for `len` bytes. `len`
         // comes from `src`, and `dest` was freshly allocated with at least that length.
         // And they don't overlap because `dest` is newly allocated.
-        unsafe { super::copy_medium(text.as_ptr(), ptr.as_ptr(), len) };
+        unsafe { super::copy_medium(src, ptr.as_ptr(), len) };
 
         Ok((ptr, cap))
     }
@@ -66,6 +102,7 @@ impl HeapBuffer {
     /// N.B. `#[inline(always)]` so the `HeapBuffer` is assembled at the callsite from
     /// the register-passed `(ptr, capacity)`. It's important only that pair crosses the
     /// cold [`alloc_copy`] boundary.
+    #[flux_rs::spec(fn(text: &str[@t]) -> Result<HeapBuffer[crate::flux_specs::str_len(t), super::cap_bits(alloc_cap(crate::flux_specs::str_len(t)))], ReserveError>)]
     #[inline(always)]
     pub(crate) fn new(text: &str) -> Result<Self, ReserveError> {
         let (ptr, cap) = Self::alloc_copy(text)?;
@@ -83,6 +120,7 @@ impl HeapBuffer {
     /// cold [`alloc_copy`] boundary.
     #[inline(always)]
     #[track_caller]
+    #[flux_rs::spec(fn(text: &str[@t]) -> HeapBuffer[crate::flux_specs::str_len(t), super::cap_bits(alloc_cap(crate::flux_specs::str_len(t)))])]
     pub(crate) fn alloc_copy_panic(text: &str) -> HeapBuffer {
         let (ptr, cap) = Self::alloc_copy(text).unwrap_with_msg();
         HeapBuffer {
@@ -97,6 +135,7 @@ impl HeapBuffer {
     /// N.B. `#[inline(always)]` so the `HeapBuffer` is assembled at the callsite from
     /// the register-passed `(ptr, capacity)`. It's important only that pair crosses the
     /// cold [`alloc_copy`] boundary.
+    #[flux_rs::spec(fn(capacity: usize) -> Result<HeapBuffer[0, super::cap_bits(alloc_cap(capacity))], ReserveError>)]
     #[inline(always)]
     pub(crate) fn with_capacity(capacity: usize) -> Result<Self, ReserveError> {
         let (ptr, cap) = Self::alloc(capacity)?;
@@ -106,6 +145,7 @@ impl HeapBuffer {
     /// Out-of-line allocation core for [`Self::with_capacity`].
     ///
     /// See [`Self::alloc_copy`] for why it returns the two-word pair instead of a `HeapBuffer`.
+    #[flux_rs::spec(fn(capacity: usize) -> Result<(ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, alloc_cap(capacity))}, Capacity[super::cap_bits(alloc_cap(capacity))]), ReserveError>)]
     #[cold]
     #[inline(never)]
     fn alloc(capacity: usize) -> Result<(ptr::NonNull<u8>, Capacity), ReserveError> {
@@ -121,6 +161,7 @@ impl HeapBuffer {
     /// N.B. `#[inline(always)]` so the `HeapBuffer` is assembled at the callsite from
     /// the register-passed `(ptr, capacity)`. It's important only that pair crosses the
     /// cold [`alloc_copy`] boundary.
+    #[flux_rs::spec(fn(text: &str[@t], additional: usize) -> Result<HeapBuffer[crate::flux_specs::str_len(t), super::cap_bits(extra_cap(crate::flux_specs::str_len(t), additional))], ReserveError>)]
     #[inline(always)]
     pub(crate) fn with_additional(text: &str, additional: usize) -> Result<Self, ReserveError> {
         let (ptr, cap) = Self::alloc_copy_extra(text, additional)?;
@@ -134,6 +175,7 @@ impl HeapBuffer {
     /// Out-of-line allocate+copy core for [`Self::with_additional`].
     ///
     /// See [`Self::alloc_copy`] for why it returns the two-word pair instead of a `HeapBuffer`.
+    #[flux_rs::spec(fn(text: &str[@t], additional: usize) -> Result<(ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, extra_cap(crate::flux_specs::str_len(t), additional))}, Capacity[super::cap_bits(extra_cap(crate::flux_specs::str_len(t), additional))]), ReserveError>)]
     #[cold]
     #[inline(never)]
     fn alloc_copy_extra(
@@ -143,20 +185,27 @@ impl HeapBuffer {
         let len = text.len();
         let new_capacity = amortized_growth(len, additional);
         let (cap, ptr) = allocate_ptr(new_capacity)?;
+        let src = text.as_ptr();
+        // `ptr` is a fresh allocation.
+        #[cfg(flux)]
+        crate::flux_specs::disjoint(src, ptr.as_ptr(), len);
 
         // copy our string into the buffer we just allocated
         //
         // SAFETY: We know both `src` and `dest` are valid for respectively reads and writes of
         // length `len` because `len` comes from `src`, and `dest` was allocated to be at least that
         // length. We also know they're non-overlapping because `dest` is newly allocated
-        unsafe { super::copy_medium(text.as_ptr(), ptr.as_ptr(), len) };
+        unsafe { super::copy_medium(src, ptr.as_ptr(), len) };
 
         Ok((ptr, cap))
     }
 
     /// Return the capacity of the [`HeapBuffer`]
+    #[flux_rs::spec(fn(&HeapBuffer[@h]) -> usize[super::bits_cap(h.bits)])]
     #[inline]
     pub(crate) fn capacity(&self) -> usize {
+        #[flux_rs::trusted(reason = "ABORT: capacity lives on the heap on 32-bit only, flux is run on 64-bit (ABORT.md §1)")]
+        #[flux_rs::spec(fn(&HeapBuffer) -> usize requires false)]
         #[cold]
         fn read_capacity_from_heap(this: &HeapBuffer) -> usize {
             // re-adjust the pointer to include the capacity that's on the heap
@@ -178,6 +227,8 @@ impl HeapBuffer {
     }
 
     /// Try to grow the [`HeapBuffer`] by reallocating, returning an error if we fail
+    #[flux_rs::spec(fn(self: &strg HeapBuffer[@h], new_capacity: usize) -> Result<usize, ()>[#ok]
+        ensures self: HeapBuffer{v: v.len == h.len && (ok => new_capacity <= super::bits_cap(v.bits)) && (!ok => v.bits == h.bits)})]
     pub(crate) fn realloc(&mut self, new_capacity: usize) -> Result<usize, ()> {
         // We can't reallocate to a size less than our length, or else we'd clip the string
         if new_capacity < self.len {
@@ -193,7 +244,7 @@ impl HeapBuffer {
         let new_capacity = cmp::max(new_capacity, MIN_HEAP_SIZE);
         // N.B. must be computed _after_ the MIN_HEAP_SIZE clamp so the stored capacity matches the
         // layout we actually (re)allocate with, otherwise dealloc/realloc get a mismatched layout.
-        let new_cap = Capacity::new(new_capacity);
+        let new_cap = request_capacity(new_capacity);
 
         let (new_cap, new_ptr) = match (self.cap.is_heap(), new_cap.is_heap()) {
             // both current and new capacity can be stored inline
@@ -294,6 +345,7 @@ impl HeapBuffer {
     ///
     /// # SAFETY:
     /// * The caller must guarantee that `len` bytes in the buffer are valid UTF-8
+    #[flux_rs::spec(fn(self: &strg HeapBuffer[@h], len: usize) requires len <= super::bits_cap(h.bits) ensures self: HeapBuffer[len, h.bits])]
     #[inline]
     pub(crate) unsafe fn set_len(&mut self, len: usize) {
         self.len = len;
@@ -307,9 +359,13 @@ impl HeapBuffer {
 }
 
 impl Clone for HeapBuffer {
+    #[flux_rs::spec(fn(&HeapBuffer[@h]) -> HeapBuffer{v: v.len == h.len})]
     fn clone(&self) -> Self {
         // Create a new HeapBuffer with the same capacity as the original
         let mut new = Self::with_capacity(self.capacity()).unwrap_with_msg();
+        // `new` is a fresh allocation.
+        #[cfg(flux)]
+        crate::flux_specs::disjoint(self.ptr.as_ptr(), new.ptr.as_ptr(), self.len);
 
         // SAFETY:
         // * `src` and `dst` don't overlap because we just created `dst`
@@ -334,16 +390,19 @@ impl Drop for HeapBuffer {
 ///
 /// Returns a [`Capacity`] that either indicates the capacity is stored on the heap, or is stored
 /// in the `Capacity` itself.
+#[flux_rs::spec(fn(capacity: usize) -> Result<(Capacity[super::cap_bits(alloc_cap(capacity))], ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, alloc_cap(capacity))}), ReserveError>)]
 #[inline]
 pub(crate) fn allocate_ptr(capacity: usize) -> Result<(Capacity, ptr::NonNull<u8>), ReserveError> {
     // We allocate at least MIN_HEAP_SIZE bytes because we need to allocate at least one byte
     let capacity = capacity.max(MIN_HEAP_SIZE);
-    let cap = Capacity::new(capacity);
+    let cap = request_capacity(capacity);
 
     // HeapBuffer doesn't support 0 sized allocations, we should always allocate at least
     // MIN_HEAP_SIZE bytes
     debug_assert!(capacity > 0);
 
+    #[flux_rs::trusted(reason = "ABORT: capacity lives on the heap on 32-bit only, flux is run on 64-bit (ABORT.md §1)")]
+    #[flux_rs::spec(fn(capacity: usize) -> Result<ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, alloc_cap(capacity))}, ReserveError> requires false)]
     #[cold]
     fn allocate_with_capacity_on_heap(capacity: usize) -> Result<ptr::NonNull<u8>, ReserveError> {
         // write our capacity onto the heap
@@ -375,6 +434,8 @@ pub(crate) fn allocate_ptr(capacity: usize) -> Result<(Capacity, ptr::NonNull<u8
 /// Deallocates a buffer on the heap, handling when the capacity is also stored on the heap
 #[inline]
 pub(crate) fn deallocate_ptr(ptr: ptr::NonNull<u8>, cap: Capacity) {
+    #[flux_rs::trusted(reason = "ABORT: capacity lives on the heap on 32-bit only, flux is run on 64-bit (ABORT.md §1)")]
+    #[flux_rs::spec(fn(ptr::NonNull<u8>) requires false)]
     #[cold]
     fn deallocate_with_capacity_on_heap(ptr: ptr::NonNull<u8>) {
         // re-adjust the pointer to include the capacity that's on the heap
@@ -402,6 +463,7 @@ pub(crate) fn deallocate_ptr(ptr: ptr::NonNull<u8>, cap: Capacity) {
 }
 
 /// SAFETY: `layout` must not be zero sized
+#[flux_rs::spec(fn(Layout[@s, @a]) -> Result<ptr::NonNull<u8>{p: heap_nn(p.base, p.addr, p.size, s)}, ReserveError> requires s > 0)]
 #[inline]
 pub(crate) unsafe fn do_alloc(layout: Layout) -> Result<ptr::NonNull<u8>, ReserveError> {
     debug_assert!(layout.size() > 0);
@@ -413,7 +475,11 @@ pub(crate) unsafe fn do_alloc(layout: Layout) -> Result<ptr::NonNull<u8>, Reserv
 
     // Check to make sure our pointer is non-null.
     // Implementations are encouraged to return null on memory exhaustion rather than aborting.
-    ptr::NonNull::new(raw_ptr).ok_or(ReserveError(()))
+    // CENTRIFUGE: was `ok_or`, whose generic `T` can't carry the size.
+    match ptr::NonNull::new(raw_ptr) {
+        Some(ptr) => Ok(ptr),
+        None => Err(ReserveError(())),
+    }
 }
 
 mod heap_capacity {
@@ -423,6 +489,7 @@ mod heap_capacity {
     use crate::ReserveError;
 
     /// SAFETY: `capacity` must not be zero
+    #[flux_rs::trusted(reason = "ABORT: capacity lives on the heap on 32-bit only, flux is run on 64-bit (ABORT.md §1)")]
     pub(crate) unsafe fn alloc(capacity: usize) -> Result<ptr::NonNull<u8>, ReserveError> {
         do_alloc(layout(capacity))
     }
@@ -432,6 +499,7 @@ mod heap_capacity {
     /// # Safety
     /// * `ptr` must point to the start of a `HeapBuffer` whose capacity is on the heap. i.e. we
     ///   must have `ptr -> [cap<usize> ; string<bytes>]`
+    #[flux_rs::trusted(reason = "ABORT: capacity lives on the heap on 32-bit only, flux is run on 64-bit (ABORT.md §1)")]
     pub(crate) unsafe fn dealloc(ptr: ptr::NonNull<u8>, capacity: usize) {
         let layout = layout(capacity);
         ::alloc::alloc::dealloc(ptr.as_ptr(), layout);
@@ -443,6 +511,7 @@ mod heap_capacity {
         buffer: StrBuffer,
     }
 
+    #[flux_rs::trusted(reason = "ABORT: capacity lives on the heap on 32-bit only, flux is run on 64-bit (ABORT.md §1)")]
     #[inline(always)]
     pub(crate) fn layout(capacity: usize) -> alloc::Layout {
         let buffer_layout = alloc::Layout::array::<u8>(capacity).expect("valid capacity");
@@ -462,6 +531,7 @@ mod inline_capacity {
 
     /// # SAFETY:
     /// * `capacity` must be > 0
+    #[flux_rs::spec(fn(capacity: usize) -> Result<ptr::NonNull<u8>{p: super::heap_nn(p.base, p.addr, p.size, capacity)}, ReserveError> requires 0 < capacity && capacity <= 72057594037927934)]
     pub(crate) unsafe fn alloc(capacity: usize) -> Result<ptr::NonNull<u8>, ReserveError> {
         do_alloc(layout(capacity))
     }
@@ -470,6 +540,7 @@ mod inline_capacity {
     ///
     /// # Safety
     /// * `ptr` must point to the start of a `HeapBuffer` whose capacity is on the inline
+    #[flux_rs::spec(fn(ptr::NonNull<u8>, capacity: usize) requires capacity <= 72057594037927934)]
     pub(crate) unsafe fn dealloc(ptr: ptr::NonNull<u8>, capacity: usize) {
         let layout = layout(capacity);
         ::alloc::alloc::dealloc(ptr.as_ptr(), layout);
@@ -480,6 +551,7 @@ mod inline_capacity {
         buffer: StrBuffer,
     }
 
+    #[flux_rs::spec(fn(capacity: usize) -> alloc::Layout[capacity, 1] requires capacity <= 72057594037927934)]
     #[inline(always)]
     pub(crate) fn layout(capacity: usize) -> alloc::Layout {
         let buffer_layout = alloc::Layout::array::<u8>(capacity).expect("valid capacity");
