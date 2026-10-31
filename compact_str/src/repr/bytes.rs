@@ -31,6 +31,8 @@ impl Repr {
     ///
     /// # Safety
     /// * The caller must guarantee that `buf` is valid UTF-8
+    #[flux_rs::trusted(reason = "ICE: infer.rs:965 incompatible types `†B` - `B[?]` on a method of a generic `&mut B`")]
+    #[flux_rs::spec(fn(buf: &mut B) -> (Repr[#r], usize{n: n <= super::rlen(r)}))]
     unsafe fn collect_buf<B: Buf>(buf: &mut B) -> (Self, usize) {
         // Get an empty Repr we can write into
         let mut repr = super::EMPTY;
